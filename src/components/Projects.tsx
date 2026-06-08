@@ -33,7 +33,7 @@ const Projects = () => {
           'https://api.github.com/users/anmolsharma152/repos?sort=updated&per_page=50'
         );
         if (!response.ok) throw new Error('Failed to fetch repositories');
-        
+
         const data = await response.json();
 
         // 1. Define your "Power Projects" in order of importance
@@ -43,7 +43,7 @@ const Projects = () => {
           'Emotion-Aware-Voice-Assistant',
           'Home-Credit-Risk-API',
           'CLTV-Unit-Economics-Engine',
-          'Pricing-Power-XGBoost'
+          'Pricing-Power-XGBoost',
         ];
 
         // 2. Filter, Sort by Priority first, then by stars

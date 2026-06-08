@@ -18,23 +18,26 @@ const About = () => {
     {
       icon: <Code className="w-6 h-6 text-primary" />,
       title: 'Full-Stack Development',
-      description: 'Building scalable web applications with modern frameworks like Next.js, React, and Node.js'
+      description:
+        'Building scalable web applications with modern frameworks like Next.js, React, and Node.js',
     },
     {
       icon: <Cpu className="w-6 h-6 text-purple-500" />,
       title: 'AI & Machine Learning',
-      description: 'Developing intelligent systems using TensorFlow, PyTorch, and transformer models'
+      description:
+        'Developing intelligent systems using TensorFlow, PyTorch, and transformer models',
     },
     {
       icon: <Database className="w-6 h-6 text-green-500" />,
       title: 'Data Science',
-      description: 'Extracting insights from complex datasets using Python, Pandas, and advanced analytics'
+      description:
+        'Extracting insights from complex datasets using Python, Pandas, and advanced analytics',
     },
     {
       icon: <Server className="w-6 h-6 text-amber-500" />,
       title: 'Cloud & DevOps',
-      description: 'Deploying and managing applications with Docker, AWS, and CI/CD pipelines'
-    }
+      description: 'Deploying and managing applications with Docker, AWS, and CI/CD pipelines',
+    },
   ];
 
   return (
@@ -64,8 +67,11 @@ const About = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-8 rounded-full"></div>
           <p className="text-xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
-            I'm a <span className="font-semibold text-primary">Full-Stack Developer</span> and <span className="font-semibold text-purple-500">AI/ML Engineer</span> passionate about solving complex problems through technology. 
-            With expertise spanning web development, data science, and artificial intelligence, I bridge the gap between data and user experience.
+            I'm a <span className="font-semibold text-primary">Full-Stack Developer</span> and{' '}
+            <span className="font-semibold text-purple-500">AI/ML Engineer</span> passionate about
+            solving complex problems through technology. With expertise spanning web development,
+            data science, and artificial intelligence, I bridge the gap between data and user
+            experience.
           </p>
         </motion.div>
 
@@ -88,24 +94,22 @@ const About = () => {
                 My Mission
               </h3>
               <p className="text-foreground/90 mb-6 leading-relaxed">
-                I specialize in creating data-driven solutions that deliver real business value. 
-                My approach combines analytical thinking with technical expertise to build systems 
-                that are not just functional, but intelligent and intuitive.
+                I specialize in creating data-driven solutions that deliver real business value. My
+                approach combines analytical thinking with technical expertise to build systems that
+                are not just functional, but intelligent and intuitive.
               </p>
               <div className="space-y-4">
                 {expertise.map((item, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.5 + (index * 0.1) }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
                     className="relative pl-6 border-l-2 border-primary/20 py-2"
                   >
                     <div className="absolute left-[-9px] top-3 w-4 h-4 rounded-full bg-primary"></div>
                     <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 mt-1">
-                        {item.icon}
-                      </div>
+                      <div className="flex-shrink-0 mt-1">{item.icon}</div>
                       <div>
                         <h4 className="font-semibold text-foreground">{item.title}</h4>
                         <p className="text-muted-foreground text-sm">{item.description}</p>
@@ -142,13 +146,13 @@ const About = () => {
                   'Building end-to-end machine learning pipelines for predictive analytics',
                   'Developing responsive web applications with intuitive user interfaces',
                   'Optimizing data workflows for better decision-making',
-                  'Creating scalable backend systems with modern architectures'
+                  'Creating scalable backend systems with modern architectures',
                 ].map((item, index) => (
-                  <motion.li 
+                  <motion.li
                     key={index}
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.7 + (index * 0.1) }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
                     className="relative pl-6"
                   >
                     <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-primary"></div>
@@ -158,7 +162,8 @@ const About = () => {
               </ul>
               <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <p className="text-gray-600 dark:text-gray-300 italic">
-                  "Technology should work for people, not the other way around. I build solutions that empower users and drive meaningful outcomes."
+                  "Technology should work for people, not the other way around. I build solutions
+                  that empower users and drive meaningful outcomes."
                 </p>
               </div>
             </motion.div>

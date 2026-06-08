@@ -8,9 +8,7 @@ import { useRef, useState } from 'react';
 const Resume = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [activeTab, setActiveTab] = useState<'experience' | 'education'>(
-    'experience'
-  );
+  const [activeTab, setActiveTab] = useState<'experience' | 'education'>('experience');
 
   const experience = [
     {
@@ -18,7 +16,8 @@ const Resume = () => {
       company: 'Personal Projects',
       period: '2024 – Present',
       location: 'Remote',
-      description: 'Building ML/NLP tools focused on emotion-aware voice interfaces and minimalist UX. Documenting Linux-first, privacy-focused developer workflows.',
+      description:
+        'Building ML/NLP tools focused on emotion-aware voice interfaces and minimalist UX. Documenting Linux-first, privacy-focused developer workflows.',
       technologies: ['Python', 'Machine Learning', 'NLP', 'Linux'],
     },
     {
@@ -26,7 +25,8 @@ const Resume = () => {
       company: 'Teleperformance',
       period: 'Jul 2023 – Apr 2024',
       location: 'Jaipur, India',
-      description: 'Delivered email and chat-based support for billing, invoicing, and technical issues. Resolved complex technical problems while maintaining SLA and KPI benchmarks. Supported Japanese clients with software and network troubleshooting.',
+      description:
+        'Delivered email and chat-based support for billing, invoicing, and technical issues. Resolved complex technical problems while maintaining SLA and KPI benchmarks. Supported Japanese clients with software and network troubleshooting.',
       technologies: ['Customer Support', 'Salesforce', 'Zendesk', 'Japanese Language'],
     },
     {
@@ -34,7 +34,8 @@ const Resume = () => {
       company: 'Self-Employed',
       period: '2022 – 2024',
       location: 'Remote',
-      description: 'Delivered modular CLI utilities in Python. Mentored peers on Neovim, Tmux, Zsh, and DWM usage.',
+      description:
+        'Delivered modular CLI utilities in Python. Mentored peers on Neovim, Tmux, Zsh, and DWM usage.',
       technologies: ['Python', 'CLI Tools', 'Neovim', 'Linux'],
     },
   ];
@@ -69,7 +70,6 @@ const Resume = () => {
     },
   ];
 
-
   return (
     <section id="resume" className="py-20 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,9 +101,7 @@ const Resume = () => {
             ].map((tab) => (
               <motion.button
                 key={tab.id}
-                onClick={() =>
-                  setActiveTab(tab.id as 'experience' | 'education')
-                }
+                onClick={() => setActiveTab(tab.id as 'experience' | 'education')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-primary text-white'
@@ -202,8 +200,6 @@ const Resume = () => {
               ))}
             </div>
           )}
-
-
         </div>
       </div>
     </section>

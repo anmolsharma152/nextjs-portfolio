@@ -77,9 +77,9 @@ const Contact = () => {
 
       // Show success toast
       toast({
-        title: "Message Sent",
+        title: 'Message Sent',
         description: "I'll get back to you soon!",
-        variant: "default",
+        variant: 'default',
       });
 
       // Reset form
@@ -87,9 +87,10 @@ const Contact = () => {
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
-        variant: "destructive",
+        title: 'Error',
+        description:
+          error instanceof Error ? error.message : 'Failed to send message. Please try again.',
+        variant: 'destructive',
       });
     }
   };
@@ -226,8 +227,8 @@ const Contact = () => {
                   Subject *
                   {errors.subject && (
                     <p className="mb-4 text-gray-600 dark:text-gray-300">
-                      Feel free to reach out to me through any of these channels. I&apos;ll get back to
-                      you as soon as possible!
+                      Feel free to reach out to me through any of these channels. I&apos;ll get back
+                      to you as soon as possible!
                     </p>
                   )}
                 </label>

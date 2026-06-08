@@ -15,7 +15,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
-  // Set theme based on user preference or system preference
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem('theme') as Theme | null;
@@ -28,29 +27,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Apply theme class to document element
   useEffect(() => {
     if (!mounted) return;
 
     const root = window.document.documentElement;
-
-    // Remove both classes first to avoid conflicts
     root.classList.remove('light', 'dark');
-
-    // Add current theme class
     root.classList.add(theme);
-
-    // Save preference
     localStorage.setItem('theme', theme);
   }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 }

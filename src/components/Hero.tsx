@@ -5,102 +5,65 @@ import { useState, useEffect } from 'react';
 
 import ThreeDCard from './3DCard';
 
+const TITLES = [
+  'Creative Technologist',
+  'ML & NLP Practitioner',
+  'Linux Enthusiast',
+  'Open Source Contributor',
+  'AI/ML Developer',
+  'Data Analyst',
+  'Data Engineer',
+  'Data Scientist',
+];
+
+const TYPING_SPEED = 50;
+const DELETING_SPEED = 25;
+const PAUSE_TIME = 1000;
+
 const Hero = () => {
   const [text, setText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-  
-  const titles = [
-    'Creative Technologist',
-    'ML & NLP Practitioner',
-    'Linux Enthusiast',
-    'Open Source Contributor',
-    'AI/ML Developer',
-    'Data Analyst',
-    'Data Engineer',
-    'Data Scientist'
-  ];
-
-  const typingSpeed = 50;
-  const deletingSpeed = 25;
-  const pauseTime = 1000;
 
   useEffect(() => {
-    const currentTitle = titles[currentTitleIndex];
+    const currentTitle = TITLES[currentTitleIndex];
 
     if (isTyping) {
       if (currentIndex < currentTitle.length) {
         const timeout = setTimeout(() => {
           setText(currentTitle.slice(0, currentIndex + 1));
           setCurrentIndex(currentIndex + 1);
-        }, typingSpeed);
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          setIsTyping(false);
-        }, pauseTime);
+        }, TYPING_SPEED);
         return () => clearTimeout(timeout);
       }
-    } else {
-      if (currentIndex > 0) {
-        const timeout = setTimeout(() => {
-          setText(currentTitle.slice(0, currentIndex - 1));
-          setCurrentIndex(currentIndex - 1);
-        }, deletingSpeed);
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          setIsTyping(true);
-          setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
-        }, 500);
-        return () => clearTimeout(timeout);
-      }
+      const timeout = setTimeout(() => setIsTyping(false), PAUSE_TIME);
+      return () => clearTimeout(timeout);
     }
-  }, [currentIndex, isTyping, currentTitleIndex, titles]);
 
-  useEffect(() => {
-    const currentTitle = titles[currentTitleIndex];
-    
-    if (isTyping) {
-      if (currentIndex < currentTitle.length) {
-        const timeout = setTimeout(() => {
-          setText(currentTitle.substring(0, currentIndex + 1));
-          setCurrentIndex(currentIndex + 1);
-        }, typingSpeed);
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          setIsTyping(false);
-        }, pauseTime);
-        return () => clearTimeout(timeout);
-      }
-    } else {
-      if (currentIndex > 0) {
-        const timeout = setTimeout(() => {
-          setText(currentTitle.substring(0, currentIndex - 1));
-          setCurrentIndex(currentIndex - 1);
-        }, deletingSpeed);
-        return () => clearTimeout(timeout);
-      } else {
-        const timeout = setTimeout(() => {
-          setIsTyping(true);
-          setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
-        }, 500);
-        return () => clearTimeout(timeout);
-      }
+    if (currentIndex > 0) {
+      const timeout = setTimeout(() => {
+        setText(currentTitle.slice(0, currentIndex - 1));
+        setCurrentIndex(currentIndex - 1);
+      }, DELETING_SPEED);
+      return () => clearTimeout(timeout);
     }
-  }, [currentIndex, isTyping, currentTitleIndex, titles]);
+
+    const timeout = setTimeout(() => {
+      setIsTyping(true);
+      setCurrentTitleIndex((prev) => (prev + 1) % TITLES.length);
+    }, 500);
+    return () => clearTimeout(timeout);
+  }, [currentIndex, isTyping, currentTitleIndex]);
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-x-hidden bg-background py-20">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black_70%)]" />
       </div>
-      
+
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 xl:gap-12 items-center">
-          {/* Left side - Text content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -117,18 +80,20 @@ const Hero = () => {
                   Hi, I'm Anmol Sharma
                 </h1>
               </div>
-              
+
               <div className="h-16 flex items-center justify-center lg:justify-start mb-6">
                 <h2 className="text-xl md:text-2xl font-medium text-muted-foreground">
                   {text}
-                  <span className={`inline-block w-1 h-8 ml-2 bg-primary ${isTyping ? 'animate-pulse' : ''}`} />
+                  <span
+                    className={`inline-block w-1 h-8 ml-2 bg-primary ${isTyping ? 'animate-pulse' : ''}`}
+                  />
                 </h2>
               </div>
 
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
                 Building human-centered technology with a liberal arts perspective
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a
                   href="#contact"
@@ -145,8 +110,7 @@ const Hero = () => {
               </div>
             </motion.div>
           </motion.div>
-          
-          {/* Right side - 3D Card */}
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}

@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import React from 'react';
@@ -6,7 +6,6 @@ import './globals.css';
 
 // Components
 import Navigation from '@/components/Navigation';
-import ThemeWrapper from '@/components/ThemeWrapper';
 import { Toaster } from '@/components/ui/Toaster';
 import { ThemeProvider } from '@/context/ThemeContext';
 
@@ -57,11 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
-          <ThemeWrapper>
-            <Navigation />
-            <main className="flex-1">{children}</main>
-            <Toaster />
-          </ThemeWrapper>
+          <Navigation />
+          <main className="flex-1">{children}</main>
+          <Toaster />
         </ThemeProvider>
         <Analytics />
       </body>

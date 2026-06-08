@@ -8,16 +8,9 @@ import tsParser from '@typescript-eslint/parser';
 export default [
   // Base configuration
   {
-    ignores: [
-      '.next/**',
-      '**/*.d.ts',
-      '**/*.config.js',
-      'node_modules/**',
-      'dist/**',
-      'build/**',
-    ],
+    ignores: ['.next/**', '**/*.d.ts', '**/*.config.js', 'node_modules/**', 'dist/**', 'build/**'],
   },
-  
+
   // TypeScript configuration
   {
     files: ['**/*.ts', '**/*.tsx'],
@@ -45,7 +38,7 @@ export default [
       '@typescript-eslint/no-redeclare': ['error'],
     },
   },
-  
+
   // Base JavaScript/TypeScript rules
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
@@ -100,7 +93,7 @@ export default [
       '@typescript-eslint/no-unused-vars': ['warn'],
     },
   },
-  
+
   // Next.js specific configuration
   {
     files: ['**/*.{js,jsx,ts,tsx}'],

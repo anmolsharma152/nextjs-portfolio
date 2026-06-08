@@ -45,17 +45,17 @@ export const ThreeDCard = () => {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
-    
+
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
+
     const mouseX = (e.clientX - rect.left) * ROTATION_RANGE;
     const mouseY = (e.clientY - rect.top) * ROTATION_RANGE;
-    
+
     const rX = (mouseY / height - HALF_ROTATION_RANGE) * -1;
-    const rY = (mouseX / width - HALF_ROTATION_RANGE);
-    
+    const rY = mouseX / width - HALF_ROTATION_RANGE;
+
     x.set(rY);
     y.set(rX);
     rotateX.set(rX * 0.5);
@@ -95,19 +95,23 @@ export const ThreeDCard = () => {
           className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-transparent"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/80 backdrop-blur-sm" />
-          
+
           {/* Animated grid pattern */}
           <div className="absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMCAwSDQwVjQwSDBWMFoiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMCAwSDQwVjQwSDBWMFoiIGZpbGw9InVybCgjcGFpbnQwX2FuZ3VsYXJfMzE0NF82MjMpIi8+PHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJwYWludDBfYW5ndWxhcl8zMTQ0XzYyMyIgY3g9IjAiIGN5PSIwIiByPSIxIiBncmFkaWVudFRyYW5zZm9ybT0icm90YXRlKDQ1IDIwIDIwKSBzY2FsZSgyMCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==")',
-              backgroundSize: '100% 100%',
-              backgroundRepeat: 'repeat'
-            }} />
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMCAwSDQwVjQwSDBWMFoiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMCAwSDQwVjQwSDBWMFoiIGZpbGw9InVybCgjcGFpbnQwX2FuZ3VsYXJfMzE0NF82MjMpIi8+PHBhdGggZD0iTTAgMEg0MFY0MEgwVjBaIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJwYWludDBfYW5ndWxhcl8zMTQ0XzYyMyIgY3g9IjAiIGN5PSIwIiByPSIxIiBncmFkaWVudFRyYW5zZm9ybT0icm90YXRlKDQ1IDIwIDIwKSBzY2FsZSgyMCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==")',
+                backgroundSize: '100% 100%',
+                backgroundRepeat: 'repeat',
+              }}
+            />
           </div>
         </motion.div>
-        
+
         {/* Glow effect */}
-        <motion.div 
+        <motion.div
           className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition duration-500"
           style={{
             transform: 'translateZ(10px)',
@@ -117,13 +121,13 @@ export const ThreeDCard = () => {
             scale: isHovered ? 1.05 : 1,
           }}
         />
-        
+
         {/* Content */}
         <div className="relative z-10 h-full w-full p-6 flex flex-col justify-between">
           {/* Header */}
           <div className="flex justify-between items-start">
             <div>
-              <motion.h2 
+              <motion.h2
                 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
                 animate={{
                   y: isHovered ? -5 : 0,
@@ -134,7 +138,7 @@ export const ThreeDCard = () => {
               >
                 Tech Stack
               </motion.h2>
-              <motion.p 
+              <motion.p
                 className="text-muted-foreground mt-1"
                 animate={{
                   opacity: isHovered ? 1 : 0.8,
@@ -153,7 +157,7 @@ export const ThreeDCard = () => {
               <Zap className="w-6 h-6 text-yellow-400" />
             </motion.div>
           </div>
-          
+
           {/* Tech stack items */}
           <div className="grid grid-cols-2 gap-4 mt-6">
             {techStack.map((tech, index) => (
@@ -166,12 +170,13 @@ export const ThreeDCard = () => {
                   y: 0,
                   transition: {
                     delay: 0.1 * index,
-                    duration: 0.3
-                  }
+                    duration: 0.3,
+                  },
                 }}
                 whileHover={{
                   y: -5,
-                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                  boxShadow:
+                    '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
                 }}
               >
                 <div className="flex items-center space-x-2">
@@ -183,9 +188,9 @@ export const ThreeDCard = () => {
               </motion.div>
             ))}
           </div>
-          
+
           {/* Footer */}
-          <motion.div 
+          <motion.div
             className="mt-6 pt-4 border-t border-border/20"
             animate={{
               opacity: isHovered ? 1 : 0.8,
@@ -196,12 +201,13 @@ export const ThreeDCard = () => {
             </p>
           </motion.div>
         </div>
-        
+
         {/* Reflection effect */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{
-            background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 60%)',
+            background:
+              'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 60%)',
             transform: 'translateZ(20px)',
           }}
           animate={{
@@ -209,9 +215,9 @@ export const ThreeDCard = () => {
           }}
         />
       </motion.div>
-      
+
       {/* Subtle shadow */}
-      <motion.div 
+      <motion.div
         className="absolute -bottom-4 left-4 right-4 h-8 bg-gradient-to-t from-black/30 to-transparent rounded-b-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         animate={{
           opacity: isHovered ? 0.4 : 0,
