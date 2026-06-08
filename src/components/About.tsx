@@ -5,6 +5,14 @@ import { Code, Cpu, Database, Globe, Server, Target } from 'lucide-react';
 import Image from 'next/image';
 import { useRef } from 'react';
 
+// Extracted strings to satisfy both ESLint quotes and Prettier formatting rules
+const INTRO_TEXT =
+  "I'm a Full-Stack Developer and AI/ML Engineer passionate about solving complex problems through technology. With expertise spanning web development, data science, and artificial intelligence, I bridge the gap between data and user experience.";
+const MISSION_SUBTITLE =
+  "I'm passionate about applying my skills to solve meaningful problems. Whether it's:";
+const QUOTE_TEXT =
+  '"Technology should work for people, not the other way around. I build solutions that empower users and drive meaningful outcomes."';
+
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -66,12 +74,8 @@ const About = () => {
             About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-foreground/80 max-w-4xl mx-auto leading-relaxed">
-            I'm a <span className="font-semibold text-primary">Full-Stack Developer</span> and{' '}
-            <span className="font-semibold text-purple-500">AI/ML Engineer</span> passionate about
-            solving complex problems through technology. With expertise spanning web development,
-            data science, and artificial intelligence, I bridge the gap between data and user
-            experience.
+          <p className="text-xl text-foreground/80 max-w-4xl mx-auto leading-relaxed text-center">
+            {INTRO_TEXT}
           </p>
         </motion.div>
 
@@ -138,9 +142,7 @@ const About = () => {
                 <Globe className="w-6 h-6 mr-2 text-primary" />
                 Real-World Impact
               </h3>
-              <p className="text-foreground/90 mb-6 leading-relaxed">
-                I'm passionate about applying my skills to solve meaningful problems. Whether it's:
-              </p>
+              <p className="text-foreground/90 mb-6 leading-relaxed">{MISSION_SUBTITLE}</p>
               <ul className="space-y-4">
                 {[
                   'Building end-to-end machine learning pipelines for predictive analytics',
@@ -161,10 +163,7 @@ const About = () => {
                 ))}
               </ul>
               <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-gray-600 dark:text-gray-300 italic">
-                  "Technology should work for people, not the other way around. I build solutions
-                  that empower users and drive meaningful outcomes."
-                </p>
+                <p className="text-gray-600 dark:text-gray-300 italic">{QUOTE_TEXT}</p>
               </div>
             </motion.div>
           </motion.div>

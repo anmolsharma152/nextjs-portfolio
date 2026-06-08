@@ -77,7 +77,7 @@ const Hero = () => {
             >
               <div className="overflow-x-visible">
                 <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 whitespace-nowrap">
-                  Hi, I'm Anmol Sharma
+                  {"Hi, I'm Anmol Sharma"}
                 </h1>
               </div>
 

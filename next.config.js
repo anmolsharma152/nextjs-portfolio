@@ -3,7 +3,16 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['avatars.githubusercontent.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com', // Replace with your actual domain
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com', // Add a block for each domain you had
+      }
+    ],
   },
   // Add any other configurations here
 };
