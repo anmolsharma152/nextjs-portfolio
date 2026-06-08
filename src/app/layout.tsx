@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     'msapplication-TileColor': '#3b82f6',
     'msapplication-config': '/browserconfig.xml',
   },
-  metadataBase: new URL('https://anmolsharma.tech'),
+  metadataBase: new URL('https://anmolsharma152.vercel.app'),
   openGraph: {
     title: 'Anmol Sharma | Portfolio',
     description: 'Portfolio of Anmol Sharma, Data Scientist and Machine Learning Engineer',
-    url: 'https://anmolsharma.tech',
+    url: 'https://anmolsharma152.vercel.app',
     siteName: 'Anmol Sharma',
     locale: 'en_US',
     type: 'website',

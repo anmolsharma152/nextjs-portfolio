@@ -2,7 +2,7 @@
 
 A modern, interactive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Showcases projects, skills, and experience with a clean, responsive design and smooth animations.
 
-Live site: [anmolsharma.tech](https://anmolsharma.tech)
+Live site: [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app)
 
 ## Features
 
@@ -37,8 +37,8 @@ Live site: [anmolsharma.tech](https://anmolsharma.tech)
 ### Installation
 
 ```bash
-git clone https://github.com/anmolsharma152/portfolio-website.git
-cd portfolio-website
+git clone https://github.com/anmolsharma152/nextjs-portfolio.git
+cd nextjs-portfolio
 npm install
 ```
 
