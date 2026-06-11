@@ -100,3 +100,6 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Project comparative meta-analysis
+/meta_analysis.md
