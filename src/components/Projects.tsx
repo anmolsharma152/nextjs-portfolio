@@ -36,17 +36,23 @@ const Projects = () => {
 
         const data = await response.json();
 
-        // Filter out forks and the special profile README repository, then sort by last updated/worked on
+        // Filter out forks and the special profile README repository.
+        // Sort by deployment status first (repos with a homepage link on top), then by last updated.
         const filteredRepos = data
           .filter(
             (repo: GitHubRepo) =>
               !repo.fork && repo.name.toLowerCase() !== 'anmolsharma152'
           )
-          .sort(
-            (a: GitHubRepo, b: GitHubRepo) =>
-              new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-          )
-          .slice(0, 9); // Display the top 9 most recently updated repositories
+          .sort((a: GitHubRepo, b: GitHubRepo) => {
+            const hasHomepageA = !!a.homepage && a.homepage.trim() !== '';
+            const hasHomepageB = !!b.homepage && b.homepage.trim() !== '';
+
+            if (hasHomepageA && !hasHomepageB) return -1;
+            if (!hasHomepageA && hasHomepageB) return 1;
+
+            return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+          })
+          .slice(0, 9); // Display the top 9 repositories
 
         setRepos(filteredRepos);
       } catch (err) {
