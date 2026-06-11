@@ -181,11 +181,11 @@ const Contact = () => {
             >
               <h4 className="font-semibold mb-3">What I Offer</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Machine Learning Model Development</li>
-                <li>• Data Analysis & Visualization</li>
-                <li>• AI Consulting & Strategy</li>
-                <li>• End-to-End Data Solutions</li>
-                <li>• Technical Project Management</li>
+                <li>• Agentic AI & RAG Pipeline Development</li>
+                <li>• Edge / On-Device ML Deployment</li>
+                <li>• LLM Evaluation & Fine-Tuning</li>
+                <li>• Production Backend Systems (FastAPI, PostgreSQL)</li>
+                <li>• Open Source AI Tooling & Consulting</li>
               </ul>
             </motion.div>
           </motion.div>
@@ -242,10 +242,7 @@ const Contact = () => {
                 <label htmlFor="subject" className="block text-sm font-medium mb-2">
                   Subject *
                   {errors.subject && (
-                    <p className="mb-4 text-gray-600 dark:text-gray-300">
-                      Feel free to reach out to me through any of these channels. I&apos;ll get back
-                      to you as soon as possible!
-                    </p>
+                    <span className="ml-2 text-sm text-red-500">{errors.subject.message}</span>
                   )}
                 </label>
                 <input
