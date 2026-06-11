@@ -36,32 +36,17 @@ const Projects = () => {
 
         const data = await response.json();
 
-        // 1. Define your "Power Projects" in order of importance
-        const priorityOrder = [
-          'MedPal',
-          'nexus_bot',
-          'Emotion-Aware-Voice-Assistant',
-          'Home-Credit-Risk-API',
-          'CLTV-Unit-Economics-Engine',
-          'Pricing-Power-XGBoost',
-        ];
-
-        // 2. Filter, Sort by Priority first, then by stars
+        // Filter out forks and the special profile README repository, then sort by last updated/worked on
         const filteredRepos = data
-          .filter((repo: GitHubRepo) => !repo.fork)
-          .sort((a: GitHubRepo, b: GitHubRepo) => {
-            const indexA = priorityOrder.indexOf(a.name);
-            const indexB = priorityOrder.indexOf(b.name);
-
-            // If both are in priority list, sort by the list order
-            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-            // If only one is in priority list, move it to top
-            if (indexA !== -1) return -1;
-            if (indexB !== -1) return 1;
-            // Otherwise, keep existing star sorting for the rest
-            return b.stargazers_count - a.stargazers_count;
-          })
-          .slice(0, 9); // Increased to 9 to show the full range
+          .filter(
+            (repo: GitHubRepo) =>
+              !repo.fork && repo.name.toLowerCase() !== 'anmolsharma152'
+          )
+          .sort(
+            (a: GitHubRepo, b: GitHubRepo) =>
+              new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+          )
+          .slice(0, 9); // Display the top 9 most recently updated repositories
 
         setRepos(filteredRepos);
       } catch (err) {
