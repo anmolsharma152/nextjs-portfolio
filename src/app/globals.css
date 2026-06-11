@@ -5,64 +5,70 @@
 @layer base {
   :root {
     /* Base HSL values */
-    --background-h: 0;
-    --background-s: 0%;
-    --background-l: 100%;
-    --foreground-h: 222.2;
-    --foreground-s: 84%;
-    --foreground-l: 4.9%;
+    --background-h: 220;
+    --background-s: 15%;
+    --background-l: 97%;
+    --foreground-h: 224;
+    --foreground-s: 71.4%;
+    --foreground-l: 4.1%;
     --card-h: 0;
     --card-s: 0%;
     --card-l: 100%;
-    --card-foreground-h: 222.2;
-    --card-foreground-s: 84%;
-    --card-foreground-l: 4.9%;
+    --card-foreground-h: 224;
+    --card-foreground-s: 71.4%;
+    --card-foreground-l: 4.1%;
     --popover-h: 0;
     --popover-s: 0%;
     --popover-l: 100%;
-    --popover-foreground-h: 222.2;
-    --popover-foreground-s: 84%;
-    --popover-foreground-l: 4.9%;
+    --popover-foreground-h: 224;
+    --popover-foreground-s: 71.4%;
+    --popover-foreground-l: 4.1%;
     --primary-h: 221.2;
     --primary-s: 83.2%;
     --primary-l: 53.3%;
     --primary-foreground-h: 210;
     --primary-foreground-s: 40%;
     --primary-foreground-l: 98%;
-    --secondary-h: 210;
-    --secondary-s: 40%;
-    --secondary-l: 96.1%;
-    --secondary-foreground-h: 222.2;
-    --secondary-foreground-s: 47.4%;
-    --secondary-foreground-l: 11.2%;
-    --muted-h: 210;
-    --muted-s: 40%;
-    --muted-l: 96.1%;
-    --muted-foreground-h: 215.4;
-    --muted-foreground-s: 16.3%;
-    --muted-foreground-l: 46.9%;
-    --accent-h: 210;
-    --accent-s: 40%;
-    --accent-l: 96.1%;
-    --accent-foreground-h: 222.2;
-    --accent-foreground-s: 47.4%;
-    --accent-foreground-l: 11.2%;
+    --secondary-h: 220;
+    --secondary-s: 15%;
+    --secondary-l: 92%;
+    --secondary-foreground-h: 224;
+    --secondary-foreground-s: 71.4%;
+    --secondary-foreground-l: 4.1%;
+    --muted-h: 220;
+    --muted-s: 10%;
+    --muted-l: 46%;
+    --muted-foreground-h: 220;
+    --muted-foreground-s: 10%;
+    --muted-foreground-l: 40%;
+    --accent-h: 220;
+    --accent-s: 15%;
+    --accent-l: 92%;
+    --accent-foreground-h: 224;
+    --accent-foreground-s: 71.4%;
+    --accent-foreground-l: 4.1%;
     --destructive-h: 0;
     --destructive-s: 84.2%;
     --destructive-l: 60.2%;
     --destructive-foreground-h: 210;
     --destructive-foreground-s: 40%;
     --destructive-foreground-l: 98%;
-    --border-h: 214.3;
-    --border-s: 31.8%;
-    --border-l: 91.4%;
-    --input-h: 214.3;
-    --input-s: 31.8%;
-    --input-l: 91.4%;
+    --border-h: 220;
+    --border-s: 13%;
+    --border-l: 89%;
+    --input-h: 220;
+    --input-s: 13%;
+    --input-l: 89%;
     --ring-h: 221.2;
     --ring-s: 83.2%;
     --ring-l: 53.3%;
     --radius: 0.5rem;
+
+    /* Glass & Grid styling variables */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.07);
+    --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.01);
+    --grid-color: rgba(0, 0, 0, 0.05);
     
     /* Backward compatibility */
     --background: var(--background-h) var(--background-s) var(--background-l);
@@ -145,6 +151,12 @@
     --ring-s: 76.3%;
     --ring-l: 48%;
     
+    /* Glass & Grid styling variables */
+    --glass-bg: rgba(15, 23, 42, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.05);
+    --grid-color: rgba(255, 255, 255, 0.04);
+
     /* Backward compatibility */
     --background: var(--background-h) var(--background-s) var(--background-l);
     --foreground: var(--foreground-h) var(--foreground-s) var(--foreground-l);
@@ -220,11 +232,18 @@
 
 /* Custom utility classes */
 .glass {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--glass-bg);
   -webkit-backdrop-filter: blur(0.5rem);
-          backdrop-filter: blur(0.5rem);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  backdrop-filter: blur(0.5rem);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
 .gradient-text {
