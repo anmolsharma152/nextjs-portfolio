@@ -56,13 +56,11 @@ const Resume = () => {
       institution: 'Indian Institute of Technology, Mandi (via CCE)',
       period: 'May 2025 - Feb 2026',
       description:
-        'CGPA: 8.44/10. Coursework in ML, NLP, Deep Learning, PCA, RAG systems, and statistical modeling across 3 trimesters.',
+        'CGPA: 8.44/10. Coursework in Mathematics for Data Science, Machine Learning, Deep Learning, NLP, Reinforcement Learning, and Computer Vision across 3 trimesters.',
       technologies: [
-        'Trimester 1: Machine Learning',
-        'Trimester 2: Deep Learning & NLP',
-        'Trimester 3: RAG & GenAI',
-        'Statistical Modeling',
-        'Computer Vision',
+        'Trimester 1: Maths & Data Science',
+        'Trimester 2: Machine Learning',
+        'Trimester 3: DL, NLP, RL & CV',
       ],
     },
     {
@@ -161,7 +159,7 @@ const Resume = () => {
 
         {/* Content */}
         <div className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-secondary opacity-30" />
+          <div className="absolute left-[31px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary to-secondary opacity-30" />
 
           {activeTab === 'experience' && (
             <div className="space-y-8">
@@ -173,7 +171,7 @@ const Resume = () => {
                   transition={{ delay: idx * 0.2, duration: 0.8 }}
                   className="relative pl-16"
                 >
-                  <div className="absolute left-6 top-4 w-4 h-4 bg-primary rounded-full border-4 border-background" />
+                  <div className="absolute left-[32px] -translate-x-1/2 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background" />
 
                   <motion.div
                     className="glass p-6 rounded-lg hover:shadow-lg transition-all duration-300"
@@ -228,7 +226,7 @@ const Resume = () => {
                   transition={{ delay: idx * 0.2, duration: 0.8 }}
                   className="relative pl-16"
                 >
-                  <div className="absolute left-6 top-4 w-4 h-4 bg-secondary rounded-full border-4 border-background" />
+                  <div className="absolute left-[32px] -translate-x-1/2 top-6 w-4 h-4 bg-secondary rounded-full border-4 border-background" />
 
                   <motion.div
                     className="glass p-6 rounded-lg hover:shadow-lg transition-all duration-300"
