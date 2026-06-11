@@ -260,20 +260,20 @@ const Projects = () => {
                 </div>
 
                 {/* Project Footer */}
-                <div className="p-6 border-t border-border/10 bg-secondary/10 flex flex-col justify-between min-h-[140px]">
+                <div className="p-6 border-t border-border bg-secondary/30 dark:bg-secondary/10 flex flex-col justify-between min-h-[140px]">
                   {/* Topics */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {repo.topics && repo.topics.length > 0 ? (
                       repo.topics.slice(0, 3).map((topic) => (
                         <span
                           key={topic}
-                          className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground"
+                          className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground font-medium"
                         >
                           {topic}
                         </span>
                       ))
                     ) : (
-                      <span className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground opacity-50">
+                      <span className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground font-medium opacity-60">
                         portfolio
                       </span>
                     )}
@@ -287,7 +287,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 glass rounded-lg hover:bg-opacity-20 transition-all duration-300 text-sm"
+                      className="flex items-center gap-2 px-4 py-2 glass rounded-lg hover:bg-primary/10 hover:text-primary transition-all duration-300 text-sm"
                     >
                       <Github size={16} />
                       <span>Code</span>
