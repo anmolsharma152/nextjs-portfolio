@@ -52,31 +52,28 @@ const Resume = () => {
 
   const education = [
     {
-      degree: 'Minor in Data Science and AI',
-      institution: 'Indian Institute of Technology, Mandi',
-      period: 'May 2025 - Feb 2026',
-      description: 'Focused on ML, NLP, PCA, RAG, and Deep Learning',
-      technologies: ['Python', 'TensorFlow', 'OpenCV', 'Pandas'],
+      degree: 'Minor in Artificial Intelligence & Data Science',
+      institution: 'Indian Institute of Technology, Mandi (via CCE)',
+      period: 'May 2025 – Feb 2026',
+      description:
+        'CGPA: 8.44/10. Coursework in ML, NLP, Deep Learning, PCA, RAG systems, and statistical modeling across 3 trimesters.',
+      technologies: ['Python', 'PyTorch', 'TensorFlow', 'OpenCV', 'Pandas', 'RAG'],
     },
     {
       degree: 'Bachelor of Computer Applications',
       institution: 'Jaipur National University',
-      period: 'Jun 2019 – May 2022',
-      description: 'Focus on C++, JavaScript, Python, and Database Management',
-      technologies: ['C++', 'JavaScript', 'Python', 'SQL', 'React.js', 'Node.js'],
+      period: 'Jun 2019 – Jun 2022',
+      description:
+        'Coursework in OOP (C++), Linux Environment, Management Information Systems, Visual Programming, and Web Design.',
+      technologies: ['C++', 'JavaScript', 'Python', 'SQL', 'Linux', 'VB.Net'],
     },
     {
       degree: 'BA in Political Science and Economics',
       institution: 'Symbiosis School for Liberal Arts',
       period: 'Jul 2016 – May 2020',
-      description: 'Focused on Public Policy, Writing, and Leadership',
-      technologies: ['Public Policy', 'Economics', 'Leadership'],
-    },
-    {
-      degree: 'High School - Science',
-      institution: 'Maheshwari Public School',
-      period: '2009 - 2015',
-      description: 'Completed high school with focus on Science subjects',
+      description:
+        'Focused on public policy analysis, institutional economics, and academic writing.',
+      technologies: ['Public Policy', 'Economics', 'Research Writing'],
     },
   ];
 
@@ -221,7 +218,7 @@ const Resume = () => {
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-secondary">{edu.degree}</h3>
+                        <h3 className="text-xl font-bold text-primary">{edu.degree}</h3>
                         <p className="text-lg font-semibold">{edu.institution}</p>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2 md:mt-0">
@@ -229,6 +226,25 @@ const Resume = () => {
                         {edu.period}
                       </div>
                     </div>
+
+                    {edu.description && (
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {edu.description}
+                      </p>
+                    )}
+
+                    {edu.technologies && (
+                      <div className="flex flex-wrap gap-2">
+                        {edu.technologies.map((tech: string, techIdx: number) => (
+                          <span
+                            key={techIdx}
+                            className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </motion.div>
                 </motion.div>
               ))}
