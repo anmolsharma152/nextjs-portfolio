@@ -109,8 +109,8 @@ const About = () => {
               <p className="text-foreground/90 mb-6 leading-relaxed">
                 I build AI systems that run locally, reason autonomously, and deploy without cloud
                 dependencies. My work centers on making agentic pipelines, edge inference, and
-                privacy-first voice interfaces production-ready — from async PostgreSQL state
-                management to PAM-level authentication daemons.
+                privacy-first voice interfaces production-ready, covering everything from async
+                PostgreSQL state management to PAM-level authentication daemons.
               </p>
               <div className="space-y-4">
                 {expertise.map((item, index) => (
@@ -159,7 +159,7 @@ const About = () => {
                 {[
                   'Reading about public policy, economics, and how technology reshapes institutions.',
                   'Tinkering with Linux ricing, DWM configs, and minimalist developer workflows.',
-                  'Exploring Japanese language and culture — it shaped how I think about precision.',
+                  'Exploring Japanese language and culture, which shaped how I think about precision.',
                   'Writing documentation and technical notes that actually help people.',
                 ].map((item, index) => (
                   <motion.li
@@ -177,7 +177,7 @@ const About = () => {
               <div className="mt-8 pt-6 border-t border-border">
                 <p className="text-muted-foreground italic">
                   {
-                    '"The best AI systems are the ones users forget are there — fast, local, and invisible."'
+                    '"The best AI systems are fast, local, and invisible: users forget they are even there."'
                   }
                 </p>
               </div>
