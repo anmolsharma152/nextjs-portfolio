@@ -11,7 +11,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com', // Add a block for each domain you had
-      }
+      },
     ],
   },
   // Add any other configurations here

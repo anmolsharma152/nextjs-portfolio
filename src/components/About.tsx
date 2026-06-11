@@ -65,6 +65,14 @@ const About = () => {
         >
           <div
             onClick={() => setIsZoomed(true)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setIsZoomed(true);
+              }
+            }}
+            role="button"
+            tabIndex={0}
             className="relative w-40 h-40 mb-6 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 cursor-zoom-in"
           >
             <Image
@@ -200,12 +208,7 @@ const About = () => {
                 <X className="w-6 h-6" />
               </button>
               <div className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
-                <Image
-                  src="/images/Anmol.webp"
-                  alt="Anmol Sharma"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/images/Anmol.webp" alt="Anmol Sharma" fill className="object-cover" />
               </div>
             </motion.div>
           </motion.div>

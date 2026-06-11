@@ -18,7 +18,17 @@ const Resume = () => {
       location: 'Remote',
       description:
         'Developing production-grade agentic platforms, edge intelligence, and reinforcement learning systems: \n• CodexEngine & Disha: Engineered agentic RAG and multi-agent workflows using LangGraph, pgvector, hybrid search, and async PostgreSQL.\n• Emotion-Aware Voice Assistant: Integrated local speech models (faster-whisper, Silero VAD, Kokoro TTS) to build a sub-200ms voice pipeline.\n• Aura Biometrics: Built a privacy-focused biometrics auth daemon for Linux running edge ONNX face models decoupled via Unix domain sockets.\n• WellnessMate & Drones: Developed a CrewAI agent platform with MediaPipe tracking, and trained reinforcement learning models (Q-learning, PPO) for drone simulation.',
-      technologies: ['LangGraph', 'FastAPI', 'pgvector', 'PyTorch', 'ONNX', 'Tauri', 'Rust/WASM', 'CrewAI', 'Python'],
+      technologies: [
+        'LangGraph',
+        'FastAPI',
+        'pgvector',
+        'PyTorch',
+        'ONNX',
+        'Tauri',
+        'Rust/WASM',
+        'CrewAI',
+        'Python',
+      ],
     },
     {
       title: 'Technical Support Executive',

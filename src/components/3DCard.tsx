@@ -1,6 +1,12 @@
 'use client';
 
-import { motion, AnimatePresence, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
+import {
+  motion,
+  AnimatePresence,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+} from 'framer-motion';
 import { Code, Cpu, Database, Zap, GitBranch, X } from 'lucide-react';
 import { useRef, useState } from 'react';
 
@@ -83,6 +89,14 @@ export const ThreeDCard = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={() => setIsZoomed(true)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsZoomed(true);
+          }
+        }}
+        role="button"
+        tabIndex={0}
         style={{
           transformStyle: 'preserve-3d',
           transform,
@@ -260,7 +274,8 @@ export const ThreeDCard = () => {
                     <Cpu className="w-5 h-5" /> Generative AI & Agents
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    LangGraph, CrewAI, Agentic RAG (CodexEngine), pgvector, FAISS, GPT-4, Llama 3, Prompt Engineering
+                    LangGraph, CrewAI, Agentic RAG (CodexEngine), pgvector, FAISS, GPT-4, Llama 3,
+                    Prompt Engineering
                   </p>
                 </div>
                 <div className="border-t border-border/40 pt-4">
@@ -268,7 +283,8 @@ export const ThreeDCard = () => {
                     <Code className="w-5 h-5" /> Machine Learning & CV
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    PyTorch, TensorFlow, Computer Vision (YOLO, OpenCV), DeepFace, Recommender Systems (RecSys_RL), Reinforcement Learning (Drone simulation, Q-Learning, PPO)
+                    PyTorch, TensorFlow, Computer Vision (YOLO, OpenCV), DeepFace, Recommender
+                    Systems (RecSys_RL), Reinforcement Learning (Drone simulation, Q-Learning, PPO)
                   </p>
                 </div>
                 <div className="border-t border-border/40 pt-4">
@@ -276,7 +292,8 @@ export const ThreeDCard = () => {
                     <Database className="w-5 h-5" /> Edge & Low-Latency AI
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    ONNX Runtime, WebAssembly (WASM), Unix Domain Sockets, PAM Modules, Silero VAD, Kokoro TTS, MediaPipe real-time posture tracking
+                    ONNX Runtime, WebAssembly (WASM), Unix Domain Sockets, PAM Modules, Silero VAD,
+                    Kokoro TTS, MediaPipe real-time posture tracking
                   </p>
                 </div>
                 <div className="border-t border-border/40 pt-4">
@@ -284,7 +301,8 @@ export const ThreeDCard = () => {
                     <GitBranch className="w-5 h-5" /> Systems & Production Ops
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    Python (FastAPI, Asyncio), SQL & PostgreSQL (Async I/O), Docker, Linux System Administration, GitHub Actions CI/CD, Tauri Desktop Shells
+                    Python (FastAPI, Asyncio), SQL & PostgreSQL (Async I/O), Docker, Linux System
+                    Administration, GitHub Actions CI/CD, Tauri Desktop Shells
                   </p>
                 </div>
               </div>
