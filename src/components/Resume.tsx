@@ -14,7 +14,7 @@ const Resume = () => {
     {
       title: 'AI Systems Engineer / Developer',
       company: 'Independent Research & Development',
-      period: '2024 – Present',
+      period: '2024 - Present',
       location: 'Remote',
       description:
         'Designing and engineering production-grade agentic RAG platforms and multi-agent workflows.\nDeveloping low-latency speech pipelines and edge-optimized biometric daemons for local interfaces.\nStructuring and debugging reinforcement learning environments for simulation and recommended personalization.',
@@ -33,7 +33,7 @@ const Resume = () => {
     {
       title: 'Technical Support Executive',
       company: 'Teleperformance',
-      period: 'Jul 2023 – Apr 2024',
+      period: 'Jul 2023 - Apr 2024',
       location: 'Jaipur, India',
       description:
         'Diagnosed software issues in production environments while maintaining a CSAT of 4.8/5.\nTranslated user issues into technical requirements and used SQL-based analysis to improve tool reliability and system performance.',
@@ -42,7 +42,7 @@ const Resume = () => {
     {
       title: 'Freelance Developer & Technologist',
       company: 'Self-Employed',
-      period: '2022 – 2024',
+      period: '2022 - 2024',
       location: 'Remote',
       description:
         'Delivered modular CLI utilities and custom automation scripts in Python.\nConfigured and optimized minimalist, Linux-first local development workflows.',
@@ -54,26 +54,44 @@ const Resume = () => {
     {
       degree: 'Minor in Artificial Intelligence & Data Science',
       institution: 'Indian Institute of Technology, Mandi (via CCE)',
-      period: 'May 2025 – Feb 2026',
+      period: 'May 2025 - Feb 2026',
       description:
         'CGPA: 8.44/10. Coursework in ML, NLP, Deep Learning, PCA, RAG systems, and statistical modeling across 3 trimesters.',
-      technologies: ['Python', 'PyTorch', 'TensorFlow', 'OpenCV', 'Pandas', 'RAG'],
+      technologies: [
+        'Trimester 1: Machine Learning',
+        'Trimester 2: Deep Learning & NLP',
+        'Trimester 3: RAG & GenAI',
+        'Statistical Modeling',
+        'Computer Vision',
+      ],
     },
     {
       degree: 'Bachelor of Computer Applications',
       institution: 'Jaipur National University',
-      period: 'Jun 2019 – Jun 2022',
+      period: 'Jun 2019 - Jun 2022',
       description:
         'Coursework in OOP (C++), Linux Environment, Management Information Systems, Visual Programming, and Web Design.',
-      technologies: ['C++', 'JavaScript', 'Python', 'SQL', 'Linux', 'VB.Net'],
+      technologies: [
+        'OOP with C++',
+        'Linux Programming',
+        'Database Systems & SQL',
+        'Visual Programming',
+        'Web Design',
+        'MIS',
+      ],
     },
     {
       degree: 'BA in Political Science and Economics',
       institution: 'Symbiosis School for Liberal Arts',
-      period: 'Jul 2016 – May 2020',
+      period: 'Jul 2016 - May 2020',
       description:
         'Focused on public policy analysis, institutional economics, and academic writing.',
-      technologies: ['Public Policy', 'Economics', 'Research Writing'],
+      technologies: [
+        'Public Policy Analysis',
+        'Institutional Economics',
+        'Academic Research Writing',
+        'Research Methodology',
+      ],
     },
   ];
 
