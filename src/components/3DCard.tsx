@@ -14,10 +14,26 @@ const ROTATION_RANGE = 20;
 const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
 
 const techStack = [
-  { icon: <Cpu className="w-5 h-5" />, name: 'Generative AI', color: 'text-purple-400' },
-  { icon: <Code className="w-5 h-5" />, name: 'Machine Learning', color: 'text-blue-400' },
-  { icon: <Database className="w-5 h-5" />, name: 'Edge AI', color: 'text-emerald-400' },
-  { icon: <GitBranch className="w-5 h-5" />, name: 'Backend & Ops', color: 'text-amber-400' },
+  {
+    icon: <Cpu className="w-5 h-5" />,
+    name: 'Generative AI',
+    color: 'text-purple-600 dark:text-purple-400',
+  },
+  {
+    icon: <Code className="w-5 h-5" />,
+    name: 'Machine Learning',
+    color: 'text-blue-600 dark:text-blue-400',
+  },
+  {
+    icon: <Database className="w-5 h-5" />,
+    name: 'Edge AI',
+    color: 'text-emerald-600 dark:text-emerald-400',
+  },
+  {
+    icon: <GitBranch className="w-5 h-5" />,
+    name: 'Backend & Ops',
+    color: 'text-amber-600 dark:text-amber-400',
+  },
 ];
 
 export const ThreeDCard = () => {
@@ -144,7 +160,7 @@ export const ThreeDCard = () => {
           <div className="flex justify-between items-start">
             <div>
               <motion.h2
-                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
                 animate={{
                   y: isHovered ? -5 : 0,
                 }}
@@ -170,7 +186,7 @@ export const ThreeDCard = () => {
               }}
               className="p-2 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20"
             >
-              <Zap className="w-6 h-6 text-yellow-400" />
+              <Zap className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
             </motion.div>
           </div>
 
@@ -179,7 +195,7 @@ export const ThreeDCard = () => {
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                className={`p-4 rounded-xl bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-sm border border-border/30 hover:border-blue-500/30 transition-all duration-300 ${tech.color}`}
+                className={`p-4 rounded-xl bg-gradient-to-br from-background/50 to-background/30 backdrop-blur-sm border border-border/60 dark:border-border/30 hover:border-blue-500/30 transition-all duration-300 ${tech.color}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
                   opacity: 1,
@@ -207,7 +223,7 @@ export const ThreeDCard = () => {
 
           {/* Footer */}
           <motion.div
-            className="mt-6 pt-4 border-t border-border/20"
+            className="mt-6 pt-4 border-t border-border/50 dark:border-border/20"
             animate={{
               opacity: isHovered ? 1 : 0.8,
             }}
@@ -265,12 +281,12 @@ export const ThreeDCard = () => {
               >
                 <X className="w-5 h-5" />
               </button>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
                 Core Technologies & Tools
               </h3>
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-bold text-purple-400 flex items-center gap-2 mb-2">
+                  <h4 className="text-lg font-bold text-purple-600 dark:text-purple-400 flex items-center gap-2 mb-2">
                     <Cpu className="w-5 h-5" /> Generative AI & Agents
                   </h4>
                   <p className="text-muted-foreground text-sm">
@@ -278,8 +294,8 @@ export const ThreeDCard = () => {
                     Prompt Engineering
                   </p>
                 </div>
-                <div className="border-t border-border/40 pt-4">
-                  <h4 className="text-lg font-bold text-blue-400 flex items-center gap-2 mb-2">
+                <div className="border-t border-border/60 dark:border-border/40 pt-4">
+                  <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 flex items-center gap-2 mb-2">
                     <Code className="w-5 h-5" /> Machine Learning & CV
                   </h4>
                   <p className="text-muted-foreground text-sm">
@@ -287,8 +303,8 @@ export const ThreeDCard = () => {
                     Systems (RecSys_RL), Reinforcement Learning (Drone simulation, Q-Learning, PPO)
                   </p>
                 </div>
-                <div className="border-t border-border/40 pt-4">
-                  <h4 className="text-lg font-bold text-emerald-400 flex items-center gap-2 mb-2">
+                <div className="border-t border-border/60 dark:border-border/40 pt-4">
+                  <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mb-2">
                     <Database className="w-5 h-5" /> Edge & Low-Latency AI
                   </h4>
                   <p className="text-muted-foreground text-sm">
@@ -296,8 +312,8 @@ export const ThreeDCard = () => {
                     Kokoro TTS, MediaPipe real-time posture tracking
                   </p>
                 </div>
-                <div className="border-t border-border/40 pt-4">
-                  <h4 className="text-lg font-bold text-amber-400 flex items-center gap-2 mb-2">
+                <div className="border-t border-border/60 dark:border-border/40 pt-4">
+                  <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 flex items-center gap-2 mb-2">
                     <GitBranch className="w-5 h-5" /> Systems & Production Ops
                   </h4>
                   <p className="text-muted-foreground text-sm">
