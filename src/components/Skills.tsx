@@ -2,7 +2,6 @@
 
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { Brain, Cpu, Terminal, Layers } from 'lucide-react';
 import { useRef } from 'react';
 
 const Skills = () => {
@@ -12,8 +11,6 @@ const Skills = () => {
   const skillCategories = [
     {
       category: 'Generative AI & LLMOps',
-      icon: <Brain className="w-6 h-6 text-purple-500" />,
-      emoji: '🤖',
       items: [
         'Multi-Agent Orchestration',
         'Agentic RAG',
@@ -25,8 +22,6 @@ const Skills = () => {
     },
     {
       category: 'Machine Learning & CV',
-      icon: <Cpu className="w-6 h-6 text-blue-500" />,
-      emoji: '🧠',
       items: [
         'Deep Learning (PyTorch, TensorFlow)',
         'Computer Vision (YOLO, OpenCV)',
@@ -37,8 +32,6 @@ const Skills = () => {
     },
     {
       category: 'AI Systems & Deployment',
-      icon: <Terminal className="w-6 h-6 text-amber-500" />,
-      emoji: '⚙️',
       items: [
         'Low-Latency CPU Inference',
         'ONNX Runtime',
@@ -50,8 +43,6 @@ const Skills = () => {
     },
     {
       category: 'Production & Backend Engineering',
-      icon: <Layers className="w-6 h-6 text-emerald-500" />,
-      emoji: '🛠️',
       items: [
         'Python (FastAPI, Asyncio)',
         'SQL & PostgreSQL (Async I/O)',
@@ -144,8 +135,7 @@ const Skills = () => {
               }}
               className="glass p-6 rounded-lg hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-center justify-center gap-3 mb-6">
-                {category.icon}
+              <div className="flex items-center justify-center mb-6">
                 <motion.h3
                   className="text-2xl font-bold text-center"
                   whileHover={{
@@ -156,7 +146,7 @@ const Skills = () => {
                     },
                   }}
                 >
-                  {category.category} {category.emoji}
+                  {category.category}
                 </motion.h3>
               </div>
               <div className="flex flex-wrap gap-2.5 justify-center">

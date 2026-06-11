@@ -158,10 +158,10 @@ const About = () => {
               <p className="text-foreground/90 mb-6 leading-relaxed">{MISSION_SUBTITLE}</p>
               <ul className="space-y-4">
                 {[
-                  'Developing CodexEngine, a production-grade Agentic RAG platform with hybrid search',
-                  'Achieving sub-200ms speech interaction via local Silero VAD, Whisper, and WASM audio engines',
-                  'Training reinforcement learning algorithms for autonomous drone flight physics and simulated navigation',
-                  'Designing recommender models (RecSys_RL) and multi-agent health assistants (WellnessMate)',
+                  'Optimizing ML pipelines for low-latency, edge-first CPU inference.',
+                  'Designing privacy-centric local voice and authentication subsystems.',
+                  'Implementing robust, persistent multi-agent workflows with state management.',
+                  'Applying reinforcement learning models to simulated environments and recommendation systems.',
                 ].map((item, index) => (
                   <motion.li
                     key={index}

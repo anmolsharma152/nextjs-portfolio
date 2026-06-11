@@ -6,14 +6,11 @@ import { useState, useEffect } from 'react';
 import ThreeDCard from './3DCard';
 
 const TITLES = [
-  'Creative Technologist',
-  'ML & NLP Practitioner',
-  'Linux Enthusiast',
-  'Open Source Contributor',
-  'AI/ML Developer',
-  'Data Analyst',
-  'Data Engineer',
-  'Data Scientist',
+  'AI Engineer',
+  'Machine Learning Engineer',
+  'Generative AI Specialist',
+  'Applied Scientist',
+  'ML Systems Developer',
 ];
 
 const TYPING_SPEED = 50;
@@ -91,7 +88,8 @@ const Hero = () => {
               </div>
 
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Building human-centered technology with a liberal arts perspective
+                Building production-grade agentic platforms, edge intelligence, and reinforcement
+                learning engines.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

@@ -14,10 +14,10 @@ const ROTATION_RANGE = 20;
 const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
 
 const techStack = [
-  { icon: <Code className="w-5 h-5" />, name: 'Full-Stack', color: 'text-blue-400' },
-  { icon: <Cpu className="w-5 h-5" />, name: 'AI/ML', color: 'text-purple-400' },
-  { icon: <Database className="w-5 h-5" />, name: 'Data Science', color: 'text-emerald-400' },
-  { icon: <GitBranch className="w-5 h-5" />, name: 'DevOps', color: 'text-amber-400' },
+  { icon: <Cpu className="w-5 h-5" />, name: 'Generative AI', color: 'text-purple-400' },
+  { icon: <Code className="w-5 h-5" />, name: 'Machine Learning', color: 'text-blue-400' },
+  { icon: <Database className="w-5 h-5" />, name: 'Edge AI', color: 'text-emerald-400' },
+  { icon: <GitBranch className="w-5 h-5" />, name: 'Backend & Ops', color: 'text-amber-400' },
 ];
 
 export const ThreeDCard = () => {

@@ -17,7 +17,7 @@ const Resume = () => {
       period: '2024 – Present',
       location: 'Remote',
       description:
-        'Developing production-grade agentic platforms, edge intelligence, and reinforcement learning systems: \n• CodexEngine & Disha: Engineered agentic RAG and multi-agent workflows using LangGraph, pgvector, hybrid search, and async PostgreSQL.\n• Emotion-Aware Voice Assistant: Integrated local speech models (faster-whisper, Silero VAD, Kokoro TTS) to build a sub-200ms voice pipeline.\n• Aura Biometrics: Built a privacy-focused biometrics auth daemon for Linux running edge ONNX face models decoupled via Unix domain sockets.\n• WellnessMate & Drones: Developed a CrewAI agent platform with MediaPipe tracking, and trained reinforcement learning models (Q-learning, PPO) for drone simulation.',
+        'Designing and engineering production-grade agentic RAG platforms and multi-agent workflows.\nDeveloping low-latency speech pipelines and edge-optimized biometric daemons for local interfaces.\nStructuring and debugging reinforcement learning environments for simulation and recommended personalization.',
       technologies: [
         'LangGraph',
         'FastAPI',
@@ -36,7 +36,7 @@ const Resume = () => {
       period: 'Jul 2023 – Apr 2024',
       location: 'Jaipur, India',
       description:
-        'Diagnosed software issues in production environments while maintaining a CSAT of 4.8/5. Translated user issues into technical requirements and used SQL-based analysis to improve tool reliability and system performance.',
+        'Diagnosed software issues in production environments while maintaining a CSAT of 4.8/5.\nTranslated user issues into technical requirements and used SQL-based analysis to improve tool reliability and system performance.',
       technologies: ['Customer Support', 'SQL', 'Salesforce', 'Japanese Language'],
     },
     {
@@ -45,7 +45,7 @@ const Resume = () => {
       period: '2022 – 2024',
       location: 'Remote',
       description:
-        'Delivered modular CLI utilities and custom automation scripts in Python. Configured and optimized minimalist, Linux-first local development workflows.',
+        'Delivered modular CLI utilities and custom automation scripts in Python.\nConfigured and optimized minimalist, Linux-first local development workflows.',
       technologies: ['Python', 'CLI Tools', 'Neovim', 'Linux'],
     },
   ];
@@ -177,7 +177,14 @@ const Resume = () => {
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground mb-4">{exp.description}</p>
+                    <div className="text-muted-foreground mb-4 space-y-2">
+                      {exp.description.split('\n').map((bullet, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-sm leading-relaxed">
+                          <span className="text-primary mt-1.5 select-none">•</span>
+                          <span>{bullet}</span>
+                        </div>
+                      ))}
+                    </div>
 
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies &&

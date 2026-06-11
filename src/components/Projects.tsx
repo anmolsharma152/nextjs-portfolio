@@ -19,6 +19,33 @@ interface GitHubRepo {
   fork: boolean;
 }
 
+const getRepoDescription = (name: string, description: string | null) => {
+  const fallbacks: { [key: string]: string } = {
+    RecSys_RL:
+      'Reinforcement Learning algorithms and environments designed for dynamic recommendation and personalization.',
+    'Fine-tuning-on-Job-Description-Corpus':
+      'Fine-tuning transformer models on specialized job description corpora for automated skill mapping.',
+    'ML-Foundations':
+      'Implementations of foundational machine learning algorithms (regression, clustering, trees) from scratch.',
+    Disha:
+      'A production-grade, agentic Personal Intelligence platform powered by LangGraph, pgvector, and async PostgreSQL.',
+    Aura: 'A privacy-focused, edge-optimized Arch Linux biometric auth daemon decoupled via Unix domain sockets and PAM.',
+    CodexEngine:
+      'A production-ready Agentic RAG engine with hybrid search, pgvector, LangGraph, and async FastAPI.',
+    WellnessMate:
+      'Multi-agent health companion built with CrewAI and MediaPipe real-time posture tracking in a Tauri desktop shell.',
+    vad_processor:
+      'Real-time, client-side Voice Activity Detection (VAD) built with Rust, WebAssembly, and ONNX Runtime.',
+    wikirag:
+      'A lightweight, fully offline RAG engine for Wikipedia querying using FAISS, RoBERTa, and Python.',
+  };
+  return (
+    fallbacks[name] ||
+    description ||
+    'A project showcasing advanced software engineering and machine learning principles.'
+  );
+};
+
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -183,32 +210,34 @@ const Projects = () => {
               whileHover={{ y: -10 }}
               className="group relative"
             >
-              <div className="glass rounded-lg overflow-hidden h-full">
-                {/* Project Header */}
-                <div className="p-6 border-b border-border/20">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                      {repo.name}
-                    </h3>
-                    <a
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-shrink-0"
-                    >
-                      <Github
-                        size={20}
-                        className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                      />
-                    </a>
+              <div className="glass rounded-lg overflow-hidden h-full flex flex-col">
+                {/* Project Header & Body */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                        {repo.name}
+                      </h3>
+                      <a
+                        href={repo.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-shrink-0"
+                      >
+                        <Github
+                          size={20}
+                          className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                        />
+                      </a>
+                    </div>
+
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-4 mb-4">
+                      {getRepoDescription(repo.name, repo.description)}
+                    </p>
                   </div>
 
-                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-4">
-                    {repo.description || 'No description available'}
-                  </p>
-
                   {/* Language and Stats */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mt-4">
                     {repo.language && (
                       <div className="flex items-center space-x-2">
                         <div
@@ -231,25 +260,24 @@ const Projects = () => {
                 </div>
 
                 {/* Project Footer */}
-                <div className="p-6">
+                <div className="p-6 border-t border-border/10 bg-secondary/10 flex flex-col justify-between min-h-[140px]">
                   {/* Topics */}
-                  {repo.topics.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {repo.topics.slice(0, 3).map((topic) => (
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {repo.topics && repo.topics.length > 0 ? (
+                      repo.topics.slice(0, 3).map((topic) => (
                         <span
                           key={topic}
-                          className="px-2 py-1 bg-muted text-xs rounded-full text-muted-foreground"
+                          className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground"
                         >
                           {topic}
                         </span>
-                      ))}
-                      {repo.topics.length > 3 && (
-                        <span className="px-2 py-1 bg-muted text-xs rounded-full text-muted-foreground">
-                          +{repo.topics.length - 3}
-                        </span>
-                      )}
-                    </div>
-                  )}
+                      ))
+                    ) : (
+                      <span className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground opacity-50">
+                        portfolio
+                      </span>
+                    )}
+                  </div>
 
                   {/* Links */}
                   <div className="flex gap-3">
