@@ -12,41 +12,41 @@ const Skills = () => {
     {
       category: 'Web Development',
       items: [
-        { name: 'React/Next.js', level: 85 },
-        { name: 'Node.js/Express', level: 80 },
-        { name: 'TypeScript/JavaScript', level: 85 },
-        { name: 'Tailwind CSS', level: 90 },
-        { name: 'MongoDB/PostgreSQL', level: 80 },
+        'React/Next.js',
+        'Node.js/Express',
+        'TypeScript/JavaScript',
+        'Tailwind CSS',
+        'MongoDB/PostgreSQL',
       ],
     },
     {
       category: 'AI/ML',
       items: [
-        { name: 'TensorFlow', level: 85 },
-        { name: 'PyTorch', level: 80 },
-        { name: 'Transformers', level: 80 },
-        { name: 'OpenCV', level: 75 },
-        { name: 'NLTK/spaCy', level: 85 },
+        'TensorFlow',
+        'PyTorch',
+        'Transformers',
+        'OpenCV',
+        'NLTK/spaCy',
       ],
     },
     {
       category: 'Data Science',
       items: [
-        { name: 'Python', level: 90 },
-        { name: 'Pandas/NumPy', level: 90 },
-        { name: 'Scikit-learn', level: 85 },
-        { name: 'Data Visualization', level: 80 },
-        { name: 'SQL', level: 85 },
+        'Python',
+        'Pandas/NumPy',
+        'Scikit-learn',
+        'Data Visualization',
+        'SQL',
       ],
     },
     {
       category: 'Tools & Frameworks',
       items: [
-        { name: 'Git/GitHub', level: 90 },
-        { name: 'Docker', level: 80 },
-        { name: 'Linux/Unix', level: 90 },
-        { name: 'AWS/GCP', level: 75 },
-        { name: 'Neovim/Tmux', level: 85 },
+        'Git/GitHub',
+        'Docker',
+        'Linux/Unix',
+        'AWS/GCP',
+        'Neovim/Tmux',
       ],
     },
   ];
@@ -77,26 +77,14 @@ const Skills = () => {
   };
 
   const skillVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: 15 },
     visible: (i: number) => ({
       opacity: 1,
-      x: 0,
       y: 0,
       transition: {
-        delay: 0.2 + i * 0.05,
-        duration: 0.5,
-      },
-    }),
-  };
-
-  const progressVariants: Variants = {
-    hidden: { width: 0 },
-    visible: (level: number) => ({
-      width: `${level}%`,
-      transition: {
-        duration: 1.5,
-        ease: [0.4, 0, 0.2, 1],
-        delay: 0.3,
+        delay: 0.1 + i * 0.03,
+        duration: 0.4,
+        ease: 'easeOut',
       },
     }),
   };
@@ -156,51 +144,21 @@ const Skills = () => {
               >
                 {category.category}
               </motion.h3>
-              <div className="space-y-4">
+              <div className="flex flex-wrap gap-2.5 justify-center">
                 {category.items.map((skill, skillIndex) => (
                   <motion.div
-                    key={skill.name}
+                    key={skill}
                     variants={skillVariants}
                     custom={skillIndex}
                     whileHover={{
-                      x: 5,
-                      transition: {
-                        duration: 0.2,
-                        ease: [0.4, 0, 0.2, 1],
-                      },
+                      scale: 1.05,
+                      y: -2,
+                      borderColor: 'hsl(var(--primary))',
+                      backgroundColor: 'rgba(59, 130, 246, 0.05)',
                     }}
+                    className="px-4 py-2 text-sm font-medium rounded-full bg-secondary/30 border border-border/50 text-foreground/90 transition-all duration-300 cursor-default"
                   >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-medium">{skill.name}</span>
-                      <motion.span
-                        className="text-sm text-muted-foreground"
-                        initial={{ opacity: 0 }}
-                        animate={isInView ? { opacity: 1 } : {}}
-                        transition={{ delay: 0.5 + skillIndex * 0.1 }}
-                      >
-                        {skill.level}%
-                      </motion.span>
-                    </div>
-                    <div className="w-full bg-background rounded-full h-2 overflow-hidden">
-                      <motion.div
-                        custom={skill.level}
-                        variants={progressVariants}
-                        className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full relative"
-                      >
-                        <motion.div
-                          className="absolute inset-0 bg-white opacity-20"
-                          animate={{
-                            x: ['-100%', '100%'],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: [0.4, 0, 0.6, 1],
-                            delay: 1 + skillIndex * 0.1,
-                          }}
-                        />
-                      </motion.div>
-                    </div>
+                    {skill}
                   </motion.div>
                 ))}
               </div>

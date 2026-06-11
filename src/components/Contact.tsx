@@ -59,6 +59,21 @@ const Contact = () => {
     },
   ];
 
+  const handleContactClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    label: string,
+    value: string
+  ) => {
+    if (label === 'Email') {
+      e.preventDefault();
+      navigator.clipboard.writeText(value);
+      toast({
+        title: 'Copied to Clipboard',
+        description: 'Email address has been copied to your clipboard.',
+      });
+    }
+  };
+
   const onSubmit = async (data: FormData) => {
     try {
       const response = await fetch('/api/contact', {
@@ -139,6 +154,7 @@ const Contact = () => {
                   href={info.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => handleContactClick(e, info.label, info.value)}
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}

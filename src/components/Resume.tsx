@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { Calendar, MapPin, Briefcase, GraduationCap } from 'lucide-react';
+import { Calendar, MapPin, Briefcase, GraduationCap, Download } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 const Resume = () => {
@@ -90,6 +90,23 @@ const Resume = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             My professional journey, education, and certifications in data science and AI.
           </p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="flex justify-center mb-4"
+          >
+            <a
+              href="/resume.pdf"
+              download="Anmol_Sharma_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+            >
+              <Download size={18} />
+              Download PDF Resume
+            </a>
+          </motion.div>
         </motion.div>
 
         {/* Tab Navigation */}
