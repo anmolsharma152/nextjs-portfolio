@@ -1,21 +1,22 @@
 'use client';
 
-import { motion, useInView, Variants } from 'framer-motion';
-import { Code, Cpu, Database, Globe, Server, Target } from 'lucide-react';
+import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
+import { Brain, Cpu, Globe, Target, Terminal, X } from 'lucide-react';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 // Extracted strings to satisfy both ESLint quotes and Prettier formatting rules
 const INTRO_TEXT =
-  "I'm a Full-Stack Developer and AI/ML Engineer passionate about solving complex problems through technology. With expertise spanning web development, data science, and artificial intelligence, I bridge the gap between data and user experience.";
+  "I'm a Python-focused AI Engineer and Systems Developer specializing in Generative AI, agentic systems, and low-latency Machine Learning deployment. I bridge the gap between advanced research (IIT Mandi) and production-grade engineering to build reliable, high-performance intelligent systems.";
 const MISSION_SUBTITLE =
-  "I'm passionate about applying my skills to solve meaningful problems. Whether it's:";
+  "I'm passionate about engineering reliable AI products that make a real difference, whether it's:";
 const QUOTE_TEXT =
   '"Technology should work for people, not the other way around. I build solutions that empower users and drive meaningful outcomes."';
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -24,27 +25,28 @@ const About = () => {
 
   const expertise = [
     {
-      icon: <Code className="w-6 h-6 text-primary" />,
-      title: 'Full-Stack Development',
+      icon: <Brain className="w-6 h-6 text-primary" />,
+      title: 'Generative AI & Agents',
       description:
-        'Building scalable web applications with modern frameworks like Next.js, React, and Node.js',
+        'Orchestrating multi-agent systems with LangGraph, CrewAI, async pgvector memory, and hybrid search',
     },
     {
       icon: <Cpu className="w-6 h-6 text-purple-500" />,
-      title: 'AI & Machine Learning',
+      title: 'Machine Learning & CV',
       description:
-        'Developing intelligent systems using TensorFlow, PyTorch, and transformer models',
+        'Building deep learning models (PyTorch) and CPU-optimized computer vision pipelines (YOLO, DeepFace)',
     },
     {
-      icon: <Database className="w-6 h-6 text-green-500" />,
-      title: 'Data Science',
+      icon: <Terminal className="w-6 h-6 text-green-500" />,
+      title: 'Edge & Low-Latency AI',
       description:
-        'Extracting insights from complex datasets using Python, Pandas, and advanced analytics',
+        'Optimizing local speech inference (whisper + Kokoro) and building offline Linux biometric authentication daemons',
     },
     {
-      icon: <Server className="w-6 h-6 text-amber-500" />,
-      title: 'Cloud & DevOps',
-      description: 'Deploying and managing applications with Docker, AWS, and CI/CD pipelines',
+      icon: <Globe className="w-6 h-6 text-amber-500" />,
+      title: 'Liberal Arts Perspective',
+      description:
+        'Leveraging a background in economics and public policy (SSLA) for human-centric design and communication',
     },
   ];
 
@@ -61,7 +63,10 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center mb-16"
         >
-          <div className="relative w-40 h-40 mb-6 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg hover:shadow-primary/20 transition-all duration-300">
+          <div
+            onClick={() => setIsZoomed(true)}
+            className="relative w-40 h-40 mb-6 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 cursor-zoom-in"
+          >
             <Image
               src="/images/Anmol.webp"
               alt="Profile Picture"
@@ -145,10 +150,10 @@ const About = () => {
               <p className="text-foreground/90 mb-6 leading-relaxed">{MISSION_SUBTITLE}</p>
               <ul className="space-y-4">
                 {[
-                  'Building end-to-end machine learning pipelines for predictive analytics',
-                  'Developing responsive web applications with intuitive user interfaces',
-                  'Optimizing data workflows for better decision-making',
-                  'Creating scalable backend systems with modern architectures',
+                  'Developing CodexEngine, a production-grade Agentic RAG platform with hybrid search',
+                  'Achieving sub-200ms speech interaction via local Silero VAD, Whisper, and WASM audio engines',
+                  'Training reinforcement learning algorithms for autonomous drone flight physics and simulated navigation',
+                  'Designing recommender models (RecSys_RL) and multi-agent health assistants (WellnessMate)',
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -169,6 +174,43 @@ const About = () => {
           </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isZoomed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsZoomed(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative max-w-3xl max-h-[85vh] w-full p-4 flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsZoomed(false)}
+                className="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-200 z-50"
+                aria-label="Close image modal"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              <div className="relative w-[300px] h-[300px] md:w-[480px] md:h-[480px] rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
+                <Image
+                  src="/images/Anmol.webp"
+                  alt="Anmol Sharma"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

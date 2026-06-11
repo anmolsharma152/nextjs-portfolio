@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
-import { Code, Cpu, Database, Zap, GitBranch } from 'lucide-react';
+import { motion, AnimatePresence, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
+import { Code, Cpu, Database, Zap, GitBranch, X } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 const ROTATION_RANGE = 20;
@@ -17,6 +17,7 @@ const techStack = [
 export const ThreeDCard = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const xSpring = useSpring(x, { stiffness: 100, damping: 30 });
@@ -81,11 +82,12 @@ export const ThreeDCard = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={() => setIsZoomed(true)}
         style={{
           transformStyle: 'preserve-3d',
           transform,
         }}
-        className="relative h-full w-full rounded-2xl overflow-hidden transition-all duration-500"
+        className="relative h-full w-full rounded-2xl overflow-hidden transition-all duration-500 cursor-zoom-in animate-card"
       >
         {/* Background gradient with shine effect */}
         <motion.div
@@ -224,6 +226,72 @@ export const ThreeDCard = () => {
           scale: isHovered ? 1.05 : 1,
         }}
       />
+
+      <AnimatePresence>
+        {isZoomed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsZoomed(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md cursor-zoom-out text-foreground"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative max-w-2xl w-full p-6 bg-background rounded-2xl border border-border shadow-2xl overflow-y-auto max-h-[85vh] cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsZoomed(false)}
+                className="absolute top-4 right-4 text-foreground/70 hover:text-foreground bg-foreground/5 hover:bg-foreground/10 p-2 rounded-full transition-colors duration-200"
+                aria-label="Close tech stack modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-6">
+                Core Technologies & Tools
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-lg font-bold text-purple-400 flex items-center gap-2 mb-2">
+                    <Cpu className="w-5 h-5" /> Generative AI & Agents
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    LangGraph, CrewAI, Agentic RAG (CodexEngine), pgvector, FAISS, GPT-4, Llama 3, Prompt Engineering
+                  </p>
+                </div>
+                <div className="border-t border-border/40 pt-4">
+                  <h4 className="text-lg font-bold text-blue-400 flex items-center gap-2 mb-2">
+                    <Code className="w-5 h-5" /> Machine Learning & CV
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    PyTorch, TensorFlow, Computer Vision (YOLO, OpenCV), DeepFace, Recommender Systems (RecSys_RL), Reinforcement Learning (Drone simulation, Q-Learning, PPO)
+                  </p>
+                </div>
+                <div className="border-t border-border/40 pt-4">
+                  <h4 className="text-lg font-bold text-emerald-400 flex items-center gap-2 mb-2">
+                    <Database className="w-5 h-5" /> Edge & Low-Latency AI
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    ONNX Runtime, WebAssembly (WASM), Unix Domain Sockets, PAM Modules, Silero VAD, Kokoro TTS, MediaPipe real-time posture tracking
+                  </p>
+                </div>
+                <div className="border-t border-border/40 pt-4">
+                  <h4 className="text-lg font-bold text-amber-400 flex items-center gap-2 mb-2">
+                    <GitBranch className="w-5 h-5" /> Systems & Production Ops
+                  </h4>
+                  <p className="text-muted-foreground text-sm">
+                    Python (FastAPI, Asyncio), SQL & PostgreSQL (Async I/O), Docker, Linux System Administration, GitHub Actions CI/CD, Tauri Desktop Shells
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

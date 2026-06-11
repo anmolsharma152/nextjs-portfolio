@@ -2,6 +2,7 @@
 
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import { Brain, Cpu, Terminal, Layers } from 'lucide-react';
 import { useRef } from 'react';
 
 const Skills = () => {
@@ -10,43 +11,54 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      category: 'Web Development',
+      category: 'Generative AI & LLMOps',
+      icon: <Brain className="w-6 h-6 text-purple-500" />,
+      emoji: '🤖',
       items: [
-        'React/Next.js',
-        'Node.js/Express',
-        'TypeScript/JavaScript',
-        'Tailwind CSS',
-        'MongoDB/PostgreSQL',
+        'Multi-Agent Orchestration',
+        'Agentic RAG',
+        'LLM Evaluation (Eval)',
+        'Vector Search (pgvector, FAISS)',
+        'Hybrid Semantic Search',
+        'Prompt Engineering',
       ],
     },
     {
-      category: 'AI/ML',
+      category: 'Machine Learning & CV',
+      icon: <Cpu className="w-6 h-6 text-blue-500" />,
+      emoji: '🧠',
       items: [
-        'TensorFlow',
-        'PyTorch',
-        'Transformers',
-        'OpenCV',
-        'NLTK/spaCy',
+        'Deep Learning (PyTorch, TensorFlow)',
+        'Computer Vision (YOLO, OpenCV)',
+        'Recommender Systems (RL-based)',
+        'Reinforcement Learning (Q-learning, PPO)',
+        'Time-Series Forecasting',
       ],
     },
     {
-      category: 'Data Science',
+      category: 'AI Systems & Deployment',
+      icon: <Terminal className="w-6 h-6 text-amber-500" />,
+      emoji: '⚙️',
       items: [
-        'Python',
-        'Pandas/NumPy',
-        'Scikit-learn',
-        'Data Visualization',
-        'SQL',
+        'Low-Latency CPU Inference',
+        'ONNX Runtime',
+        'WebAssembly (WASM)',
+        'Unix Domain Sockets',
+        'PAM Modules',
+        'MediaPipe Tracking',
       ],
     },
     {
-      category: 'Tools & Frameworks',
+      category: 'Production & Backend Engineering',
+      icon: <Layers className="w-6 h-6 text-emerald-500" />,
+      emoji: '🛠️',
       items: [
-        'Git/GitHub',
-        'Docker',
-        'Linux/Unix',
-        'AWS/GCP',
-        'Neovim/Tmux',
+        'Python (FastAPI, Asyncio)',
+        'SQL & PostgreSQL (Async I/O)',
+        'Docker Containerization',
+        'Linux Systems',
+        'CI/CD (GitHub Actions)',
+        'Tauri Desktop Shells',
       ],
     },
   ];
@@ -132,18 +144,21 @@ const Skills = () => {
               }}
               className="glass p-6 rounded-lg hover:shadow-lg transition-all duration-300"
             >
-              <motion.h3
-                className="text-2xl font-bold mb-6 text-center"
-                whileHover={{
-                  color: 'var(--primary)',
-                  transition: {
-                    duration: 0.3,
-                    ease: [0.4, 0, 0.2, 1],
-                  },
-                }}
-              >
-                {category.category}
-              </motion.h3>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                {category.icon}
+                <motion.h3
+                  className="text-2xl font-bold text-center"
+                  whileHover={{
+                    color: 'var(--primary)',
+                    transition: {
+                      duration: 0.3,
+                      ease: [0.4, 0, 0.2, 1],
+                    },
+                  }}
+                >
+                  {category.category} {category.emoji}
+                </motion.h3>
+              </div>
               <div className="flex flex-wrap gap-2.5 justify-center">
                 {category.items.map((skill, skillIndex) => (
                   <motion.div

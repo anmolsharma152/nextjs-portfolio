@@ -12,13 +12,13 @@ const Resume = () => {
 
   const experience = [
     {
-      title: 'Independent Creator',
-      company: 'Personal Projects',
+      title: 'AI Systems Engineer / Developer',
+      company: 'Independent Research & Development',
       period: '2024 – Present',
       location: 'Remote',
       description:
-        'Building ML/NLP tools focused on emotion-aware voice interfaces and minimalist UX. Documenting Linux-first, privacy-focused developer workflows.',
-      technologies: ['Python', 'Machine Learning', 'NLP', 'Linux'],
+        'Developing production-grade agentic platforms, edge intelligence, and reinforcement learning systems: \n• CodexEngine & Disha: Engineered agentic RAG and multi-agent workflows using LangGraph, pgvector, hybrid search, and async PostgreSQL.\n• Emotion-Aware Voice Assistant: Integrated local speech models (faster-whisper, Silero VAD, Kokoro TTS) to build a sub-200ms voice pipeline.\n• Aura Biometrics: Built a privacy-focused biometrics auth daemon for Linux running edge ONNX face models decoupled via Unix domain sockets.\n• WellnessMate & Drones: Developed a CrewAI agent platform with MediaPipe tracking, and trained reinforcement learning models (Q-learning, PPO) for drone simulation.',
+      technologies: ['LangGraph', 'FastAPI', 'pgvector', 'PyTorch', 'ONNX', 'Tauri', 'Rust/WASM', 'CrewAI', 'Python'],
     },
     {
       title: 'Technical Support Executive',
@@ -26,8 +26,8 @@ const Resume = () => {
       period: 'Jul 2023 – Apr 2024',
       location: 'Jaipur, India',
       description:
-        'Delivered email and chat-based support for billing, invoicing, and technical issues. Resolved complex technical problems while maintaining SLA and KPI benchmarks. Supported Japanese clients with software and network troubleshooting.',
-      technologies: ['Customer Support', 'Salesforce', 'Zendesk', 'Japanese Language'],
+        'Diagnosed software issues in production environments while maintaining a CSAT of 4.8/5. Translated user issues into technical requirements and used SQL-based analysis to improve tool reliability and system performance.',
+      technologies: ['Customer Support', 'SQL', 'Salesforce', 'Japanese Language'],
     },
     {
       title: 'Freelance Developer & Technologist',
@@ -35,7 +35,7 @@ const Resume = () => {
       period: '2022 – 2024',
       location: 'Remote',
       description:
-        'Delivered modular CLI utilities in Python. Mentored peers on Neovim, Tmux, Zsh, and DWM usage.',
+        'Delivered modular CLI utilities and custom automation scripts in Python. Configured and optimized minimalist, Linux-first local development workflows.',
       technologies: ['Python', 'CLI Tools', 'Neovim', 'Linux'],
     },
   ];
