@@ -231,7 +231,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto', y: 0 }}
               exit={{ opacity: 0, height: 0, y: -20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="md:hidden overflow-hidden bg-background/80 dark:bg-background/90 backdrop-blur-lg border-t border-border/30 shadow-lg"
+              className="md:hidden overflow-hidden bg-background/80 dark:bg-background/90 backdrop-blur-lg border-t border-border/60 dark:border-border/30 shadow-lg"
             >
               <div className="px-2 pt-2 pb-4 space-y-1">
                 {navItems.map((item, index) => (
@@ -249,7 +249,7 @@ const Navigation = () => {
                 ))}
 
                 {/* Social Icons - Mobile */}
-                <div className="pt-2 mt-4 border-t border-border/20">
+                <div className="pt-2 mt-4 border-t border-border/50 dark:border-border/20">
                   <div className="flex justify-center space-x-4 px-4">
                     {socialLinks.map((link, index) => (
                       <motion.a
