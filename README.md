@@ -1,6 +1,6 @@
 # Anmol Sharma - Portfolio Website
 
-A modern, interactive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Showcases projects, skills, and experience with a clean, responsive design and smooth animations.
+A modern, interactive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Showcases projects, experience, and education with a clean, responsive design and smooth animations.
 
 Live site: [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app)
 
@@ -86,8 +86,7 @@ src/
 │   ├── Hero.tsx
 │   ├── Navigation.tsx
 │   ├── Projects.tsx           # GitHub API integration
-│   ├── Resume.tsx
-│   └── Skills.tsx
+│   └── Resume.tsx
 ├── context/
 │   └── ThemeContext.tsx       # Light/dark theme provider
 ├── hooks/
@@ -105,7 +104,6 @@ Update content in the section components under `src/components/`:
 |------|----------------|
 | `Hero.tsx` | Name, tagline, rotating titles |
 | `About.tsx` | Bio and expertise cards |
-| `Skills.tsx` | Skill categories and levels |
 | `Projects.tsx` | GitHub username and priority project list |
 | `Resume.tsx` | Experience and education timeline |
 | `Contact.tsx` | Social links and email |
