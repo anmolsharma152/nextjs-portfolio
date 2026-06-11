@@ -8,10 +8,6 @@ import { useRef, useState } from 'react';
 // Extracted strings to satisfy both ESLint quotes and Prettier formatting rules
 const INTRO_TEXT =
   "I'm a Python-focused AI Engineer and Systems Developer specializing in Generative AI, agentic systems, and low-latency Machine Learning deployment. I bridge the gap between advanced research (IIT Mandi) and production-grade engineering to build reliable, high-performance intelligent systems.";
-const MISSION_SUBTITLE =
-  "I'm passionate about engineering reliable AI products that make a real difference, whether it's:";
-const QUOTE_TEXT =
-  '"Technology should work for people, not the other way around. I build solutions that empower users and drive meaningful outcomes."';
 
 const About = () => {
   const ref = useRef(null);
@@ -53,7 +49,7 @@ const About = () => {
   return (
     <section id="about" className="py-20 relative z-10">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/5 [mask-image:linear-gradient(to_bottom,transparent,black_70%)]" />
+        <div className="absolute inset-0 bg-grid-pattern [mask-image:linear-gradient(to_bottom,transparent,black_70%)]" />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -111,9 +107,10 @@ const About = () => {
                 My Mission
               </h3>
               <p className="text-foreground/90 mb-6 leading-relaxed">
-                I specialize in creating data-driven solutions that deliver real business value. My
-                approach combines analytical thinking with technical expertise to build systems that
-                are not just functional, but intelligent and intuitive.
+                I build AI systems that run locally, reason autonomously, and deploy without cloud
+                dependencies. My work centers on making agentic pipelines, edge inference, and
+                privacy-first voice interfaces production-ready — from async PostgreSQL state
+                management to PAM-level authentication daemons.
               </p>
               <div className="space-y-4">
                 {expertise.map((item, index) => (
@@ -153,15 +150,17 @@ const About = () => {
             >
               <h3 className="text-2xl font-bold mb-6 flex items-center text-foreground">
                 <Globe className="w-6 h-6 mr-2 text-primary" />
-                Real-World Impact
+                Beyond the Code
               </h3>
-              <p className="text-foreground/90 mb-6 leading-relaxed">{MISSION_SUBTITLE}</p>
+              <p className="text-foreground/90 mb-6 leading-relaxed">
+                When I&apos;m not engineering AI systems, I&apos;m usually:
+              </p>
               <ul className="space-y-4">
                 {[
-                  'Optimizing ML pipelines for low-latency, edge-first CPU inference.',
-                  'Designing privacy-centric local voice and authentication subsystems.',
-                  'Implementing robust, persistent multi-agent workflows with state management.',
-                  'Applying reinforcement learning models to simulated environments and recommendation systems.',
+                  'Reading about public policy, economics, and how technology reshapes institutions.',
+                  'Tinkering with Linux ricing, DWM configs, and minimalist developer workflows.',
+                  'Exploring Japanese language and culture — it shaped how I think about precision.',
+                  'Writing documentation and technical notes that actually help people.',
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -175,8 +174,12 @@ const About = () => {
                   </motion.li>
                 ))}
               </ul>
-              <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-gray-600 dark:text-gray-300 italic">{QUOTE_TEXT}</p>
+              <div className="mt-8 pt-6 border-t border-border">
+                <p className="text-muted-foreground italic">
+                  {
+                    '"The best AI systems are the ones users forget are there — fast, local, and invisible."'
+                  }
+                </p>
               </div>
             </motion.div>
           </motion.div>
