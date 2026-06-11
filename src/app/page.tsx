@@ -3,7 +3,6 @@ import Contact from '@/components/Contact';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import Resume from '@/components/Resume';
-import Skills from '@/components/Skills';
 
 const Home = () => {
   return (
@@ -13,9 +12,6 @@ const Home = () => {
       </section>
       <section id="about" className="scroll-mt-20">
         <About />
-      </section>
-      <section id="skills" className="scroll-mt-20">
-        <Skills />
       </section>
       <section id="projects" className="scroll-mt-20">
         <Projects />
