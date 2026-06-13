@@ -66,7 +66,10 @@ const Projects = () => {
         // Filter out forks and the special profile README repository.
         // Sort by deployment status first (repos with a homepage link on top), then by last updated.
         const filteredRepos = data
-          .filter((repo: GitHubRepo) => !repo.fork && repo.name.toLowerCase() !== 'anmolsharma152')
+          .filter(
+            (repo: GitHubRepo) =>
+              !repo.fork && !['anmolsharma152', 'nextjs-portfolio', 'anmolsharma152.github.io'].includes(repo.name.toLowerCase())
+          )
           .sort((a: GitHubRepo, b: GitHubRepo) => {
             const hasHomepageA = !!a.homepage && a.homepage.trim() !== '';
             const hasHomepageB = !!b.homepage && b.homepage.trim() !== '';
