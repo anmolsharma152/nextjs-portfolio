@@ -1,23 +1,9 @@
-import * as sgMail from '@sendgrid/mail';
 import { NextResponse } from 'next/server';
-
-let sendGridConfigured = false;
-
-function ensureSendGrid(): boolean {
-  const apiKey = process.env.SENDGRID_API_KEY;
-  if (!apiKey) {
-    return false;
-  }
-  if (!sendGridConfigured) {
-    sgMail.setApiKey(apiKey);
-    sendGridConfigured = true;
-  }
-  return true;
-}
+import { Resend } from 'resend';
 
 const createEmailContent = (name: string, email: string, subject: string, message: string) => ({
+  from: 'Contact Form <onboarding@resend.dev>',
   to: process.env.NEXT_PUBLIC_RECIPIENT_EMAIL || 'ozymandias.work@gmail.com',
-  from: process.env.NEXT_PUBLIC_SENDER_EMAIL || 'noreply@ozymandias.work',
   replyTo: email,
   subject: `New Contact: ${subject}`,
   text: `
@@ -54,9 +40,11 @@ export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   try {
-    if (!ensureSendGrid()) {
+    if (!process.env.RESEND_API_KEY) {
       return NextResponse.json({ error: 'Email service is not configured' }, { status: 503 });
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { name, email, subject, message } = await request.json();
 
@@ -69,13 +57,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Please enter a valid email address' }, { status: 400 });
     }
 
-    const msg = createEmailContent(name, email, subject, message);
-    const [response] = await sgMail.send(msg);
+    const emailOptions = createEmailContent(name, email, subject, message);
+    const { data, error } = await resend.emails.send(emailOptions);
+
+    if (error) {
+      console.error('Error sending email with Resend:', error);
+      return NextResponse.json({ error: 'Failed to send message via Resend.' }, { status: 500 });
+    }
 
     return NextResponse.json({
       success: true,
       message: 'Message sent successfully!',
-      status: response.statusCode,
+      data,
     });
   } catch (error: unknown) {
     console.error('Error in contact API route:', {
