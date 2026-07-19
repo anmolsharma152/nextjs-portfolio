@@ -2,6 +2,15 @@
 
 A modern, interactive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Showcases projects, experience, and education with a clean, responsive design and smooth animations.
 
+
+## Docs
+
+| Doc | Purpose |
+|-----|---------|
+| **[docs/STATUS.md](./docs/STATUS.md)** | Handoff status |
+| [docs/setup.md](./docs/setup.md) | Setup |
+| [AGENTS.md](./AGENTS.md) | Agent guidance |
+
 Live site: [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app)
 
 ## Features
