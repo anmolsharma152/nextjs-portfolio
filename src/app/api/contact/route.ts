@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 
 const createEmailContent = (name: string, email: string, subject: string, message: string) => ({
   from: 'Contact Form <onboarding@resend.dev>',
-  to: process.env.NEXT_PUBLIC_RECIPIENT_EMAIL || 'sharmaa15297@gmail.com',
+  to: process.env.NEXT_PUBLIC_RECIPIENT_EMAIL || 'anmolsharma152.dev@gmail.com',
   replyTo: email,
   subject: `New Contact: ${subject}`,
   text: `

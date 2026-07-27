@@ -66,7 +66,7 @@ const Navigation = () => {
     },
     {
       icon: <Mail size={18} />,
-      href: 'mailto:sharmaa15297@gmail.com',
+      href: 'mailto:anmolsharma152.dev@gmail.com',
       label: 'Email',
     },
   ];
