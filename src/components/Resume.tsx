@@ -17,16 +17,15 @@ const Resume = () => {
       period: '2024 - Present',
       location: 'Remote',
       description:
-        'Designing and engineering production-grade agentic RAG platforms and multi-agent workflows.\nDeveloping low-latency speech pipelines and edge-optimized biometric daemons for local interfaces.\nStructuring and debugging reinforcement learning environments for simulation and recommended personalization.',
+        'Architecting production-grade agentic platforms (Disha, CodexEngine) using LangGraph, pgvector, and async PostgreSQL.\nEngineering sub-150ms speech pipelines (vad_processor) and edge Linux biometric daemons (Aura).\nStructuring reinforcement learning environments for recommendation and personalized simulation.',
       technologies: [
         'LangGraph',
         'FastAPI',
         'pgvector',
         'PyTorch',
+        'Rust/WASM',
         'ONNX',
         'Tauri',
-        'Rust/WASM',
-        'CrewAI',
         'Python',
       ],
     },
@@ -95,7 +94,7 @@ const Resume = () => {
 
   return (
     <section id="resume" className="py-20 relative z-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -104,11 +103,13 @@ const Resume = () => {
           className="text-center mb-16"
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="font-heading text-4xl md:text-5xl font-extrabold mb-6"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
-            <span className="gradient-text">Resume & Experience</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+              Resume & Experience
+            </span>
           </motion.h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             My professional journey, education, and certifications in data science and AI.
@@ -124,7 +125,7 @@ const Resume = () => {
               download="Anmol_Sharma_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-blue-600/20 transition-all duration-300 transform hover:-translate-y-0.5"
             >
               <Download size={18} />
               Download PDF Resume

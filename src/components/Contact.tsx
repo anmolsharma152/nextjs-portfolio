@@ -15,6 +15,7 @@ const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address' }),
   subject: z.string().min(5, { message: 'Subject must be at least 5 characters' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters' }),
+  honeypot: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -35,6 +36,7 @@ const Contact = () => {
       email: '',
       subject: '',
       message: '',
+      honeypot: '',
     },
   });
 
@@ -112,7 +114,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 relative z-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -120,8 +122,10 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Get In Touch</span>
+          <h2 className="font-heading text-4xl md:text-5xl font-extrabold mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+              Get In Touch
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to start a conversation? Let&apos;s discuss your next project or collaboration
@@ -138,7 +142,7 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-6">Let&apos;s Connect</h3>
+              <h3 className="font-heading text-2xl font-bold mb-6">Let&apos;s Connect</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 I&apos;m always interested in hearing about new opportunities and exciting projects.
                 Whether you have a question or just want to say hi, I&apos;ll try my best to get
@@ -161,7 +165,7 @@ const Contact = () => {
                   whileHover={{ x: 10 }}
                   className="flex items-center space-x-4 p-4 glass rounded-lg hover:bg-opacity-20 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center">
                     <info.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -199,6 +203,14 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              {/* Hidden honeypot field for bot spam detection */}
+              <input
+                type="text"
+                {...register('honeypot')}
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -280,7 +292,7 @@ const Contact = () => {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-600/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

@@ -11,7 +11,6 @@ import { Code, Cpu, Database, Zap, GitBranch, X } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 const ROTATION_RANGE = 20;
-const HALF_ROTATION_RANGE = ROTATION_RANGE / 2;
 
 const techStack = [
   {
@@ -42,27 +41,23 @@ export const ThreeDCard = () => {
   const [isZoomed, setIsZoomed] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const xSpring = useSpring(x, { stiffness: 100, damping: 30 });
-  const ySpring = useSpring(y, { stiffness: 100, damping: 30 });
-  const rotateX = useSpring(0, { stiffness: 100, damping: 30 });
-  const rotateY = useSpring(0, { stiffness: 100, damping: 30 });
+  const mouseX = useMotionValue(150);
+  const mouseY = useMotionValue(150);
+  const xSpring = useSpring(x, { stiffness: 150, damping: 20 });
+  const ySpring = useSpring(y, { stiffness: 150, damping: 20 });
 
   const transform = useMotionTemplate`
     perspective(1000px)
     rotateX(${ySpring}deg)
     rotateY(${xSpring}deg)
-    scale(${isHovered ? 1.03 : 1})
-  `;
-
-  const gradientPosition = useMotionTemplate`
-    ${x}px ${y}px
+    scale(${isHovered ? 1.04 : 1})
   `;
 
   const gradient = useMotionTemplate`
     radial-gradient(
-      300px circle at ${gradientPosition},
-      rgba(99, 102, 241, 0.25),
-      transparent 50%
+      350px circle at ${mouseX}px ${mouseY}px,
+      rgba(37, 99, 235, 0.35),
+      transparent 70%
     )
   `;
 
@@ -73,16 +68,17 @@ export const ThreeDCard = () => {
     const width = rect.width;
     const height = rect.height;
 
-    const mouseX = (e.clientX - rect.left) * ROTATION_RANGE;
-    const mouseY = (e.clientY - rect.top) * ROTATION_RANGE;
+    const relX = e.clientX - rect.left;
+    const relY = e.clientY - rect.top;
 
-    const rX = (mouseY / height - HALF_ROTATION_RANGE) * -1;
-    const rY = mouseX / width - HALF_ROTATION_RANGE;
+    mouseX.set(relX);
+    mouseY.set(relY);
+
+    const rX = (relY / height - 0.5) * -ROTATION_RANGE;
+    const rY = (relX / width - 0.5) * ROTATION_RANGE;
 
     x.set(rY);
     y.set(rX);
-    rotateX.set(rX * 0.5);
-    rotateY.set(rY * 0.5);
   };
 
   const handleMouseEnter = () => {
@@ -92,8 +88,6 @@ export const ThreeDCard = () => {
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
-    rotateX.set(0);
-    rotateY.set(0);
     setIsHovered(false);
   };
 
@@ -160,7 +154,7 @@ export const ThreeDCard = () => {
           <div className="flex justify-between items-start">
             <div>
               <motion.h2
-                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+                className="font-heading text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent"
                 animate={{
                   y: isHovered ? -5 : 0,
                 }}
@@ -281,7 +275,7 @@ export const ThreeDCard = () => {
               >
                 <X className="w-5 h-5" />
               </button>
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
+              <h3 className="font-heading text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent mb-6">
                 Core Technologies & Tools
               </h3>
               <div className="space-y-6">

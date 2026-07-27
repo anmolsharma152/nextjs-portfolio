@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 
 // Extracted strings to satisfy both ESLint quotes and Prettier formatting rules
 const INTRO_TEXT =
-  "I'm a Python-focused AI Engineer and Systems Developer specializing in Generative AI, agentic systems, and low-latency Machine Learning deployment. I bridge the gap between advanced research (IIT Mandi) and production-grade engineering to build reliable, high-performance intelligent systems.";
+  'I bridge the gap between academic research (IIT Mandi) and production systems engineering. With a unique background spanning economics, public policy, and artificial intelligence, I am passionate about privacy-first local computing, minimalist Linux workflows, and building software that feels seamless and invisible.';
 
 const About = () => {
   const ref = useRef(null);
@@ -22,27 +22,27 @@ const About = () => {
   const expertise = [
     {
       icon: <Brain className="w-6 h-6 text-primary" />,
-      title: 'Generative AI & Agents',
+      title: 'Stateful Agentic Orchestration',
       description:
-        'Orchestrating multi-agent systems with LangGraph, CrewAI, async pgvector memory, and hybrid search',
-    },
-    {
-      icon: <Cpu className="w-6 h-6 text-purple-500" />,
-      title: 'Machine Learning & CV',
-      description:
-        'Building deep learning models (PyTorch) and CPU-optimized computer vision pipelines (YOLO, DeepFace)',
+        'Building resilient multi-agent graphs with LangGraph, async PostgreSQL state management, and long-term memory.',
     },
     {
       icon: <Terminal className="w-6 h-6 text-green-500" />,
-      title: 'Edge & Low-Latency AI',
+      title: 'Sub-150ms Edge & Speech Pipelines',
       description:
-        'Optimizing local speech inference (whisper + Kokoro) and building offline Linux biometric authentication daemons',
+        'Optimizing local voice activity detection (VAD), speech inference, Rust/WASM, and ONNX Runtime execution.',
+    },
+    {
+      icon: <Cpu className="w-6 h-6 text-purple-500" />,
+      title: 'Hybrid RAG & Knowledge Retrieval',
+      description:
+        'Engineering production-grade RAG architectures combining vector embeddings (pgvector), keyword search, and reranking.',
     },
     {
       icon: <Globe className="w-6 h-6 text-amber-500" />,
-      title: 'Liberal Arts Perspective',
+      title: 'Decoupled Systems & Production Backends',
       description:
-        'Leveraging a background in economics and public policy (SSLA) for human-centric design and communication',
+        'Developing Unix domain socket daemons, low-level Linux authentication modules, and async FastAPI & Node.js backends.',
     },
   ];
 
@@ -79,10 +79,10 @@ const About = () => {
               priority
             />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+          <h2 className="font-heading text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             About Me
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-8 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-8 rounded-full"></div>
           <p className="text-xl text-foreground/80 max-w-4xl mx-auto leading-relaxed text-center">
             {INTRO_TEXT}
           </p>
@@ -102,15 +102,14 @@ const About = () => {
               transition={{ delay: 0.4 }}
               className="glass p-6 rounded-lg hover:shadow-lg transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold mb-6 flex items-center text-foreground">
+              <h3 className="font-heading text-2xl font-bold mb-6 flex items-center text-foreground">
                 <Target className="w-6 h-6 mr-2 text-primary" />
                 My Mission
               </h3>
               <p className="text-foreground/90 mb-6 leading-relaxed">
-                I build AI systems that run locally, reason autonomously, and deploy without cloud
-                dependencies. My work centers on making agentic pipelines, edge inference, and
-                privacy-first voice interfaces production-ready, covering everything from async
-                PostgreSQL state management to PAM-level authentication daemons.
+                To build high-performance AI systems that eliminate cloud vendor lock-in, deliver
+                sub-150ms real-time interactions, and bring privacy-first agentic intelligence
+                directly to local environments.
               </p>
               <div className="space-y-4">
                 {expertise.map((item, index) => (

@@ -143,7 +143,7 @@ const Navigation = () => {
                 priority
               />
             </motion.div>
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+            <span className="font-heading text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
               Anmol Sharma
             </span>
           </motion.a>
@@ -161,7 +161,7 @@ const Navigation = () => {
                 className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 relative group cursor-pointer"
               >
                 {item.name}
-                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-4/5 group-hover:left-[10%]" />
+                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-4/5 group-hover:left-[10%]" />
               </motion.a>
             ))}
           </div>

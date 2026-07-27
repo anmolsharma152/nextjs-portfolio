@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    /* Base HSL values */
-    --background-h: 220;
-    --background-s: 16%;
-    --background-l: 95%;
+    /* Porcelain Slate White #f8fafc */
+    --background-h: 210;
+    --background-s: 40%;
+    --background-l: 98%;
     --foreground-h: 224;
     --foreground-s: 71.4%;
     --foreground-l: 4.1%;
@@ -250,7 +250,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+  background-image: linear-gradient(to right, #2563eb, #4f46e5);
 }
 
 /* Smooth scrolling */

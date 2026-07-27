@@ -6,11 +6,10 @@ import { useState, useEffect } from 'react';
 import ThreeDCard from './3DCard';
 
 const TITLES = [
-  'AI Engineer',
-  'Machine Learning Engineer',
-  'Generative AI Specialist',
-  'Applied Scientist',
-  'ML Systems Developer',
+  'AI Systems Engineer',
+  'Backend Systems Developer',
+  'Multi-Agent Architect',
+  'Low-Latency ML Engineer',
 ];
 
 const TYPING_SPEED = 50;
@@ -73,35 +72,40 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
             >
               <div className="overflow-x-visible">
-                <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 whitespace-nowrap">
-                  {"Hi, I'm Anmol Sharma"}
+                <h1 className="font-heading text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-4 text-foreground">
+                  Building{' '}
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+                    Low-Latency AI Infra
+                  </span>{' '}
+                  &amp; Stateful Multi-Agent Backends
                 </h1>
               </div>
 
-              <div className="h-16 flex items-center justify-center lg:justify-start mb-6">
+              <div className="h-12 flex items-center justify-center lg:justify-start mb-6">
                 <h2 className="text-xl md:text-2xl font-medium text-muted-foreground">
                   {text}
                   <span
-                    className={`inline-block w-1 h-8 ml-2 bg-primary ${isTyping ? 'animate-pulse' : ''}`}
+                    className={`inline-block w-1 h-7 ml-2 bg-primary ${isTyping ? 'animate-pulse' : ''}`}
                   />
                 </h2>
               </div>
 
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Building production-grade agentic platforms, edge intelligence, and reinforcement
-                learning engines.
+                Specializing in Python, TypeScript/Node.js, and Rust. Architecting stateful agentic
+                systems, async FastAPI &amp; Node backends, sub-150ms edge inferencing, and pgvector
+                knowledge retrieval.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a
                   href="#contact"
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md font-medium hover:opacity-90 transition-opacity shadow-lg hover:shadow-blue-500/20"
+                  className="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold hover:opacity-95 transition-all shadow-lg hover:shadow-blue-600/20"
                 >
                   Get In Touch
                 </a>
                 <a
                   href="#projects"
-                  className="px-8 py-3 border border-muted-foreground/30 text-foreground rounded-md font-medium hover:bg-muted/50 transition-colors"
+                  className="px-8 py-3.5 border border-border/80 text-foreground rounded-xl font-semibold hover:bg-muted/50 transition-colors"
                 >
                   View My Work
                 </a>

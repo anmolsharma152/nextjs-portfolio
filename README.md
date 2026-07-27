@@ -16,11 +16,11 @@ Live site: [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app)
 ## Features
 
 - **Next.js 14 App Router** with React Server Components
-- **Interactive UI** — 3D card, typewriter hero, Framer Motion scroll animations
-- **Dark/Light theme** — custom theme context with system preference detection
-- **Contact form** — client/server validation (React Hook Form + Zod) with SendGrid email delivery
-- **Live GitHub projects** — fetches and prioritizes repositories from the GitHub API
-- **Responsive design** — mobile-first layout with anchor navigation
+- **Interactive UI** — Three.js 3D wireframe sphere background with cursor parallax tracking, typewriter hero, 3D card, and Framer Motion scroll animations
+- **Pristine Porcelain Light Mode** — Default light mode design system with full dark/light theme context toggle
+- **Contact form & Honeypot** — client/server validation (React Hook Form + Zod) with Resend email delivery and bot honeypot protection
+- **Full SEO & Metadata Suite** — dynamic `sitemap.xml`, `robots.txt`, dynamic OpenGraph sharing card (`opengraph-image.tsx`), and JSON-LD `Person` schema
+- **Live GitHub projects** — fetches and prioritizes real repositories (`Disha`, `CodexEngine`, `vad_processor`, `Aura`) from the GitHub API
 - **Vercel Analytics** — built-in traffic tracking
 
 ## Tech Stack
@@ -28,10 +28,12 @@ Live site: [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app)
 | Layer | Tools |
 |-------|-------|
 | Framework | Next.js 14, React 18, TypeScript |
-| Styling | Tailwind CSS 3.4, tailwindcss-animate |
+| 3D & Styling | Three.js, Tailwind CSS 3.4, tailwindcss-animate |
+| Typography | Plus Jakarta Sans, Inter |
 | Animations | Framer Motion |
-| Forms | React Hook Form, Zod |
-| Email | SendGrid |
+| Forms & Validation | React Hook Form, Zod |
+| Email | Resend |
+| SEO & Sharing | Next.js Metadata, Dynamic OG Image, JSON-LD Schema |
 | UI | Radix Toast, Lucide icons |
 | Analytics | Vercel Analytics |
 
@@ -41,7 +43,7 @@ Live site: [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app)
 
 - Node.js 18+
 - npm (or pnpm/yarn)
-- SendGrid API key (required for contact form in production)
+- Resend API key (required for contact form delivery)
 
 ### Installation
 
@@ -60,12 +62,11 @@ cp .env.local.example .env.local
 ```
 
 ```env
-SENDGRID_API_KEY=your_sendgrid_api_key_here
-NEXT_PUBLIC_SENDER_EMAIL=noreply@yourdomain.com
+RESEND_API_KEY=re_your_resend_api_key_here
 NEXT_PUBLIC_RECIPIENT_EMAIL=your_email@example.com
 ```
 
-The app builds without these variables. The contact form returns a 503 error at runtime if SendGrid is not configured.
+The app builds cleanly without these variables. The contact form returns a 503 response at runtime if Resend is not configured.
 
 ### Development
 

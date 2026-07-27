@@ -21,6 +21,24 @@ interface GitHubRepo {
 
 const getRepoDescription = (name: string, description: string | null) => {
   const fallbacks: { [key: string]: string } = {
+    'Scholar-Loop':
+      'Personal spaced-repetition agent executing FSRS-scheduled Learn + Quiz loops daily via Resend across System Design, ML, and DSA.',
+    IdeaForge:
+      'Agentic creative synthesis engine that diverges, evaluates, synthesizes, and persists novel ideas with compounding memory.',
+    Ozyman:
+      'Personal Operator & Autonomous AI Assistant app built for multi-agent workflows and local environment control.',
+    commerce_cortex:
+      'Stateful autonomous commerce & inventory intelligence agent demonstrating persistent tool calling with LangGraph & PostgreSQL.',
+    'frontier-llmops-core':
+      'An end-to-end engineering workspace for the modern LLM lifecycle, evaluation benchmarks, and fine-tuning pipelines.',
+    'drone-intelligence':
+      'Self-guided predictive drone simulation & reinforcement learning navigation engine built with PyTorch and Gym.',
+    PsyRAG:
+      'Domain-adapted RAG pipeline for psychological support & conversational mental health assistants with safety guardrails.',
+    MedPal:
+      'Neuro-symbolic clinical decision support assistant integrating structured medical knowledge graphs with LLM reasoning.',
+    'promptcraft-lab':
+      'A hands-on playground for prompt engineering, systematic evaluation metrics, and LLM behavior benchmarking.',
     RecSys_RL:
       'Reinforcement Learning algorithms and environments designed for dynamic recommendation and personalization.',
     'Fine-tuning-on-Job-Description-Corpus':
@@ -68,7 +86,10 @@ const Projects = () => {
         const filteredRepos = data
           .filter(
             (repo: GitHubRepo) =>
-              !repo.fork && !['anmolsharma152', 'nextjs-portfolio', 'anmolsharma152.github.io'].includes(repo.name.toLowerCase())
+              !repo.fork &&
+              !['anmolsharma152', 'nextjs-portfolio', 'anmolsharma152.github.io'].includes(
+                repo.name.toLowerCase()
+              )
           )
           .sort((a: GitHubRepo, b: GitHubRepo) => {
             const hasHomepageA = !!a.homepage && a.homepage.trim() !== '';
@@ -181,7 +202,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20 relative z-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -189,8 +210,10 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Featured Projects</span>
+          <h2 className="font-heading text-4xl md:text-5xl font-extrabold mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+              Featured Projects
+            </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A showcase of my recent work and open source contributions from GitHub.
@@ -302,7 +325,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 text-sm"
+                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 text-sm font-medium"
                       >
                         <ExternalLink size={16} />
                         <span>Live</span>
@@ -333,7 +356,7 @@ const Projects = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-150"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-600/20 transition-all duration-150"
           >
             <Github size={20} />
             View All Projects on GitHub

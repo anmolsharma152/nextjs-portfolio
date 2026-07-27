@@ -46,7 +46,15 @@ export async function POST(request: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const { name, email, subject, message } = await request.json();
+    const { name, email, subject, message, honeypot } = await request.json();
+
+    // Silently drop bot submissions that fill out the hidden honeypot field
+    if (honeypot) {
+      return NextResponse.json({
+        success: true,
+        message: 'Message sent successfully!',
+      });
+    }
 
     if (!name || !email || !subject || !message) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });

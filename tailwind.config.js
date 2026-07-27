@@ -108,7 +108,8 @@ module.exports = {
           'hsl(var(--card-foreground-h, 0) var(--card-foreground-s, 0%) var(--card-foreground-l, 0%))',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', ...fontFamily.sans],
+        heading: ['var(--font-jakarta)', ...fontFamily.sans],
       },
     },
   },
