@@ -241,7 +241,7 @@ const Projects = () => {
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                      <h3 className="font-heading text-xl font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
                         {repo.name}
                       </h3>
                       <a

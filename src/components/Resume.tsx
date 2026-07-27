@@ -180,7 +180,7 @@ const Resume = () => {
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-primary">{exp.title}</h3>
+                        <h3 className="font-heading text-xl font-bold text-primary">{exp.title}</h3>
                         <p className="text-lg font-semibold">{exp.company}</p>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2 md:mt-0">
@@ -235,7 +235,9 @@ const Resume = () => {
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-primary">{edu.degree}</h3>
+                        <h3 className="font-heading text-xl font-bold text-primary">
+                          {edu.degree}
+                        </h3>
                         <p className="text-lg font-semibold">{edu.institution}</p>
                       </div>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2 md:mt-0">

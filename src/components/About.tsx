@@ -124,7 +124,7 @@ const About = () => {
                     <div className="flex items-start space-x-3">
                       <div className="flex-shrink-0 mt-1">{item.icon}</div>
                       <div>
-                        <h4 className="font-semibold text-foreground">{item.title}</h4>
+                        <h4 className="font-heading font-semibold text-foreground">{item.title}</h4>
                         <p className="text-muted-foreground text-sm">{item.description}</p>
                       </div>
                     </div>
@@ -147,7 +147,7 @@ const About = () => {
               transition={{ delay: 0.6 }}
               className="glass p-6 rounded-lg hover:shadow-lg transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold mb-6 flex items-center text-foreground">
+              <h3 className="font-heading text-2xl font-bold mb-6 flex items-center text-foreground">
                 <Globe className="w-6 h-6 mr-2 text-primary" />
                 Beyond the Code
               </h3>

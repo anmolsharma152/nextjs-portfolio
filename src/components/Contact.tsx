@@ -183,7 +183,7 @@ const Contact = () => {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="glass p-6 rounded-lg"
             >
-              <h4 className="font-semibold mb-3">What I Offer</h4>
+              <h4 className="font-heading font-semibold mb-3">What I Offer</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• Agentic AI & RAG Pipeline Development</li>
                 <li>• Edge / On-Device ML Deployment</li>
@@ -201,7 +201,7 @@ const Contact = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="glass p-8 rounded-lg"
           >
-            <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+            <h3 className="font-heading text-2xl font-bold mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Hidden honeypot field for bot spam detection */}
               <input
@@ -225,7 +225,7 @@ const Contact = () => {
                     className={`w-full px-4 py-3 bg-background border ${
                       errors.name ? 'border-red-500' : 'border-border'
                     } rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300`}
-                    placeholder="Your name"
+                    placeholder="Your full name"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -240,7 +240,7 @@ const Contact = () => {
                     id="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="ozymandias.work@gmail.com"
+                    placeholder="you@example.com"
                     {...register('email')}
                     className={`w-full px-4 py-3 bg-background border ${
                       errors.email ? 'border-red-500' : 'border-border'
