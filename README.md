@@ -83,7 +83,7 @@ npm run format   # Prettier
 ```
 src/
 ├── app/
-│   ├── api/contact/route.ts   # SendGrid contact endpoint
+│   ├── api/contact/route.ts   # Resend API contact endpoint
 │   ├── globals.css            # Global styles and CSS variables
 │   ├── layout.tsx             # Root layout, nav, theme, analytics
 │   ├── page.tsx               # Home page (all sections)
@@ -126,7 +126,7 @@ Update content in the section components under `src/components/`:
 
 1. Push to GitHub
 2. Import the repo in Vercel
-3. Add environment variables (`SENDGRID_API_KEY`, `NEXT_PUBLIC_SENDER_EMAIL`, `NEXT_PUBLIC_RECIPIENT_EMAIL`)
+3. Add environment variables (`RESEND_API_KEY`, `NEXT_PUBLIC_RECIPIENT_EMAIL`)
 4. Deploy
 
 ### CI
