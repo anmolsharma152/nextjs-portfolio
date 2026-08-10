@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Anmol Sharma — Autonomous AI Platforms & Duplex Voice Systems';
+export const alt = 'Anmol Sharma';
 export const size = {
   width: 1200,
   height: 630,
@@ -61,7 +61,7 @@ export default async function Image() {
             letterSpacing: '-1.5px',
           }}
         >
-          Architecting Autonomous AI Platforms &amp; Duplex Voice Systems
+          Anmol Sharma
         </h1>
         <p
           style={{

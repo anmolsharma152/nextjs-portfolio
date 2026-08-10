@@ -22,7 +22,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Anmol Sharma — Autonomous AI Platforms & Duplex Voice Systems',
+  title: 'Anmol Sharma',
   description:
     'Engineering production-grade agentic platforms, sub-150ms voice pipelines, and edge intelligence daemons.',
   metadataBase: new URL('https://anmolsharma152.vercel.app'),
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     'msapplication-TileColor': '#2563eb',
   },
   openGraph: {
-    title: 'Anmol Sharma — Autonomous AI Platforms & Duplex Voice Systems',
+    title: 'Anmol Sharma',
     description:
       'Engineering production-grade agentic platforms, sub-150ms voice pipelines, and edge intelligence daemons.',
     url: 'https://anmolsharma152.vercel.app',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Anmol Sharma — Autonomous AI Platforms & Duplex Voice Systems',
+    title: 'Anmol Sharma',
     description:
       'Engineering production-grade agentic platforms, sub-150ms voice pipelines, and edge intelligence daemons.',
   },
