@@ -56,6 +56,8 @@ const getRepoDescription = (name: string, description: string | null) => {
       'Real-time, client-side Voice Activity Detection (VAD) built with Rust, WebAssembly, and ONNX Runtime.',
     wikirag:
       'A lightweight, fully offline RAG engine for Wikipedia querying using FAISS, RoBERTa, and Python.',
+    nimbus:
+      'Autonomous Cloud Software Engineering Agent Platform powered by multi-agent orchestration and cloud infrastructure tools.',
   };
   return (
     fallbacks[name] ||
