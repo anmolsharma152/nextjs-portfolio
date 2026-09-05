@@ -1,138 +1,127 @@
-# Anmol Sharma - Portfolio Website
+<div align="center">
 
-A modern, interactive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Showcases projects, experience, and education with a clean, responsive design and smooth animations.
+# Anmol Sharma — Portfolio (v1 Archive)
 
+**Executive AI Engineer & Systems Portfolio (Three.js & Porcelain Light Edition)**
 
-## Docs
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Three.js](https://img.shields.io/badge/Three.js-0.185-000000?style=flat-square&logo=three.js)](https://threejs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
+[![Deployment](https://img.shields.io/badge/Vercel-Live-brightgreen?style=flat-square&logo=vercel)](https://anmolsharma152.vercel.app)
 
-| Doc | Purpose |
-|-----|---------|
-| **[docs/STATUS.md](./docs/STATUS.md)** | Handoff status |
-| [docs/setup.md](./docs/setup.md) | Setup |
-| [AGENTS.md](./AGENTS.md) | Agent guidance |
+> **Note**: This repository represents the **v1 production build**, actively deployed at [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app).  
+> The next-generation retro-futuristic dark/crimson redesign is maintained in [**`anmolsharma152/portfolio-v2`**](https://github.com/anmolsharma152/portfolio-v2).
 
-Live site: [anmolsharma152.vercel.app](https://anmolsharma152.vercel.app)
+</div>
 
-## Features
+---
 
-- **Next.js 14 App Router** with React Server Components
-- **Interactive UI** — Three.js 3D wireframe sphere background with cursor parallax tracking, typewriter hero, 3D card, and Framer Motion scroll animations
-- **Pristine Porcelain Light Mode** — Default light mode design system with full dark/light theme context toggle
-- **Contact form & Honeypot** — client/server validation (React Hook Form + Zod) with Resend email delivery and bot honeypot protection
-- **Full SEO & Metadata Suite** — dynamic `sitemap.xml`, `robots.txt`, dynamic OpenGraph sharing card (`opengraph-image.tsx`), and JSON-LD `Person` schema
-- **Live GitHub projects** — fetches and prioritizes real repositories (`Disha`, `CodexEngine`, `vad_processor`, `Aura`) from the GitHub API
-- **Vercel Analytics** — built-in traffic tracking
+## ✦ Overview
 
-## Tech Stack
+The v1 portfolio was engineered to showcase AI engineering capabilities through a clean, executive aesthetic. It pairs a **Porcelain Light Mode** default design system with an interactive **Three.js 3D wireframe sphere**, full SEO and social card automation, server-side validated contact delivery via Resend, and live GitHub API repository integrations.
 
-| Layer | Tools |
-|-------|-------|
-| Framework | Next.js 14, React 18, TypeScript |
-| 3D & Styling | Three.js, Tailwind CSS 3.4, tailwindcss-animate |
-| Typography | Plus Jakarta Sans, Inter |
-| Animations | Framer Motion |
-| Forms & Validation | React Hook Form, Zod |
-| Email | Resend |
-| SEO & Sharing | Next.js Metadata, Dynamic OG Image, JSON-LD Schema |
-| UI | Radix Toast, Lucide icons |
-| Analytics | Vercel Analytics |
+### Key Features
+- **Interactive Three.js Wireframe**: Custom 3D sapphire wireframe geometry with continuous rotation and cursor parallax tracking.
+- **Porcelain Light Design System**: Clean editorial light theme with integrated dark mode toggle and CSS custom property theming.
+- **Serverless Contact Form**: React Hook Form + Zod client validation, server-side API route handler (`/api/contact`), bot honeypot filtering, and transactional email dispatch via Resend.
+- **Dynamic SEO & Social Cards**: Automated `sitemap.xml`, `robots.txt`, dynamic OpenGraph card generation via `@vercel/og` (`opengraph-image.tsx`), and structured JSON-LD `Person` metadata.
+- **Live Repository Showcase**: Dynamic GitHub API client fetching production projects (`Disha`, `CodexEngine`, `vad_processor`, `Aura`).
 
-## Getting Started
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | Next.js 14 (App Router, Server Components), React 18, TypeScript |
+| **3D & Canvas** | Three.js (`three`), `@types/three` |
+| **Styling** | Tailwind CSS 3.4, `tailwindcss-animate`, Radix UI primitives |
+| **Animation** | Framer Motion |
+| **Forms & Delivery** | React Hook Form, Zod, Resend API |
+| **Icons** | Lucide React |
+| **Analytics** | Vercel Analytics |
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
-
 - Node.js 18+
-- npm (or pnpm/yarn)
-- Resend API key (required for contact form delivery)
+- npm, pnpm, or yarn
+- Resend API key (optional, required for contact form dispatch)
 
-### Installation
+### Setup & Installation
 
 ```bash
+# 1. Clone repository
 git clone https://github.com/anmolsharma152/nextjs-portfolio.git
 cd nextjs-portfolio
+
+# 2. Install dependencies
 npm install
-```
 
-### Environment Variables
-
-Copy the example file and fill in your values:
-
-```bash
+# 3. Configure environment variables (optional)
 cp .env.local.example .env.local
+
+# 4. Start local development server
+npm run dev
 ```
+
+The application will be available at [`http://localhost:3000`](http://localhost:3000).
+
+### Environment Configuration
 
 ```env
-RESEND_API_KEY=re_your_resend_api_key_here
+RESEND_API_KEY=re_your_api_key_here
 NEXT_PUBLIC_RECIPIENT_EMAIL=your_email@example.com
 ```
 
-The app builds cleanly without these variables. The contact form returns a 503 response at runtime if Resend is not configured.
+*Note: The project builds cleanly without these variables; the contact route returns HTTP 503 at runtime if Resend credentials are not set.*
 
-### Development
+### Scripts
 
 ```bash
-npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run start    # serve production build
-npm run lint     # ESLint with auto-fix
-npm run format   # Prettier
+npm run dev      # Launch Next.js dev server
+npm run build    # Compile production bundle
+npm run start    # Serve production build locally
+npm run lint     # Run ESLint with automated fixes
+npm run format   # Format codebase with Prettier
 ```
 
-## Project Structure
+---
+
+## 📂 Project Structure
 
 ```
-src/
-├── app/
-│   ├── api/contact/route.ts   # Resend API contact endpoint
-│   ├── globals.css            # Global styles and CSS variables
-│   ├── layout.tsx             # Root layout, nav, theme, analytics
-│   ├── page.tsx               # Home page (all sections)
-│   └── viewport.ts            # Viewport and theme-color config
-├── components/
-│   ├── ui/                    # Toast primitives (shadcn-style)
-│   ├── 3DCard.tsx             # Interactive 3D card in hero
-│   ├── About.tsx
-│   ├── Contact.tsx
-│   ├── Hero.tsx
-│   ├── Navigation.tsx
-│   ├── Projects.tsx           # GitHub API integration
-│   └── Resume.tsx
-├── context/
-│   └── ThemeContext.tsx       # Light/dark theme provider
-├── hooks/
-│   └── use-toast.ts
-└── lib/
-    └── utils.ts               # cn() helper
-public/                        # Static assets (favicons, manifest)
+nextjs-portfolio/
+├── docs/                      # Historical specs and status records
+│   ├── STATUS.md              # Status handoff
+│   └── setup.md               # Setup reference
+├── src/
+│   ├── app/
+│   │   ├── api/contact/       # Resend contact form API endpoint
+│   │   ├── globals.css        # Theme CSS custom properties
+│   │   ├── layout.tsx         # Root layout, theme provider, navigation
+│   │   ├── opengraph-image.tsx# Dynamic SVG/Canvas OG image generator
+│   │   ├── page.tsx           # Main single-page scroll view
+│   │   └── sitemap.ts         # Automated sitemap generator
+│   ├── components/
+│   │   ├── 3DCard.tsx         # Interactive tilted card
+│   │   ├── About.tsx          # Background & education
+│   │   ├── Contact.tsx        # Resend-backed contact form
+│   │   ├── Hero.tsx           # Three.js canvas & typewriter headline
+│   │   ├── Navigation.tsx     # Theme toggle & anchor navigation
+│   │   └── Projects.tsx       # GitHub API integration & repo cards
+│   ├── context/
+│   │   └── ThemeContext.tsx   # Light/dark theme state provider
+│   └── lib/
+│       └── validations.ts     # Zod schemas for contact submissions
+└── tailwind.config.js
 ```
 
-## Customization
+---
 
-Update content in the section components under `src/components/`:
+## 📄 License
 
-| File | What to change |
-|------|----------------|
-| `Hero.tsx` | Name, tagline, rotating titles |
-| `About.tsx` | Bio and expertise cards |
-| `Projects.tsx` | GitHub username and priority project list |
-| `Resume.tsx` | Experience and education timeline |
-| `Contact.tsx` | Social links and email |
-| `Navigation.tsx` | Nav items and social links |
-| `app/layout.tsx` | SEO metadata and site URL |
-
-## Deployment
-
-### Vercel (recommended)
-
-1. Push to GitHub
-2. Import the repo in Vercel
-3. Add environment variables (`RESEND_API_KEY`, `NEXT_PUBLIC_RECIPIENT_EMAIL`)
-4. Deploy
-
-### CI
-
-GitHub Actions runs lint and build on every push/PR to `main`. No secrets are required for the build step.
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+MIT © [Anmol Sharma](https://github.com/anmolsharma152)
