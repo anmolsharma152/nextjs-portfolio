@@ -123,9 +123,8 @@ npm run format   # Format codebase with Prettier
 
 ```
 nextjs-portfolio/
-├── docs/                      # Project status and setup notes
-│   ├── STATUS.md              # Current project state
-│   └── setup.md               # Environment and deployment guide
+├── docs/                      # Project status and handoff
+│   └── STATUS.md              # Current project state
 ├── src/
 │   ├── app/
 │   │   ├── api/contact/       # Resend contact form route handler
