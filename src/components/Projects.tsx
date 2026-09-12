@@ -30,6 +30,7 @@ interface FlagshipProject {
 
 const VERIFIED_LIVE_REPOS: Record<string, string> = {
   CodexEngine: 'https://codex-engine.vercel.app',
+  'Delusion-Calculator': 'https://female-delusion-calculator.vercel.app',
 };
 
 const FLAGSHIP_PROJECTS: FlagshipProject[] = [
@@ -152,11 +153,11 @@ const Projects = () => {
               )
           )
           .sort((a: GitHubRepo, b: GitHubRepo) => {
-            const hasHomepageA = !!a.homepage && a.homepage.trim() !== '';
-            const hasHomepageB = !!b.homepage && b.homepage.trim() !== '';
+            const isLiveA = !!VERIFIED_LIVE_REPOS[a.name];
+            const isLiveB = !!VERIFIED_LIVE_REPOS[b.name];
 
-            if (hasHomepageA && !hasHomepageB) return -1;
-            if (!hasHomepageA && hasHomepageB) return 1;
+            if (isLiveA && !isLiveB) return -1;
+            if (!isLiveA && isLiveB) return 1;
 
             return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
           })
