@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react';
 import ThreeDCard from './3DCard';
 
 const TITLES = [
-  'AI Systems Engineer',
-  'Backend Systems Developer',
-  'Multi-Agent Architect',
+  'Agentic AI & Systems Engineer',
+  'Multi-Agent Systems Architect',
+  'Backend & AI Infra Developer',
   'Low-Latency ML Engineer',
 ];
 
@@ -91,9 +91,9 @@ const Hero = () => {
               </div>
 
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
-                Specializing in Python, TypeScript/Node.js, and Rust. Architecting stateful agentic
-                systems, async FastAPI &amp; Node backends, sub-150ms edge inferencing, and pgvector
-                knowledge retrieval.
+                Agentic AI &amp; Systems Engineer based in Jaipur, India. Specializing in autonomous
+                multi-agent state machines, production RAG, async FastAPI &amp; PostgreSQL backends,
+                and distributed LLMOps.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

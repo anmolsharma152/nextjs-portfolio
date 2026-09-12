@@ -281,38 +281,37 @@ export const ThreeDCard = () => {
               <div className="space-y-6">
                 <div>
                   <h4 className="text-lg font-bold text-purple-600 dark:text-purple-400 flex items-center gap-2 mb-2">
-                    <Cpu className="w-5 h-5" /> Generative AI & Agents
+                    <Cpu className="w-5 h-5" /> Agentic &amp; AI Orchestration
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    LangGraph, CrewAI, Agentic RAG (CodexEngine), pgvector, FAISS, GPT-4, Llama 3,
-                    Prompt Engineering
+                    LangGraph, LangChain, Multi-Agent Systems, State Routing, Tool Calling,
+                    Structured Outputs, NeMo Guardrails, RAG, PyTorch
                   </p>
                 </div>
                 <div className="border-t border-border/60 dark:border-border/40 pt-4">
                   <h4 className="text-lg font-bold text-blue-600 dark:text-blue-400 flex items-center gap-2 mb-2">
-                    <Code className="w-5 h-5" /> Machine Learning & CV
+                    <Code className="w-5 h-5" /> Cloud, LLMOps &amp; Observability
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    PyTorch, TensorFlow, Computer Vision (YOLO, OpenCV), DeepFace, Recommender
-                    Systems (RecSys_RL), Reinforcement Learning (Drone simulation, Q-Learning, PPO)
+                    AWS (Bedrock, S3, EC2), Azure, GCP, LangSmith, Langfuse, RAGAS, OpenTelemetry
                   </p>
                 </div>
                 <div className="border-t border-border/60 dark:border-border/40 pt-4">
                   <h4 className="text-lg font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 mb-2">
-                    <Database className="w-5 h-5" /> Edge & Low-Latency AI
+                    <Database className="w-5 h-5" /> Languages &amp; Systems Engineering
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    ONNX Runtime, WebAssembly (WASM), Unix Domain Sockets, PAM Modules, Silero VAD,
-                    Kokoro TTS, MediaPipe real-time posture tracking
+                    Python, FastAPI, Linux, Docker, Rust, WebSockets, Server-Sent Events (SSE), SQL,
+                    TypeScript, Node.js
                   </p>
                 </div>
                 <div className="border-t border-border/60 dark:border-border/40 pt-4">
                   <h4 className="text-lg font-bold text-amber-600 dark:text-amber-400 flex items-center gap-2 mb-2">
-                    <GitBranch className="w-5 h-5" /> Systems & Production Ops
+                    <GitBranch className="w-5 h-5" /> Databases &amp; Data Pipelines
                   </h4>
                   <p className="text-muted-foreground text-sm">
-                    Python (FastAPI, Asyncio), SQL & PostgreSQL (Async I/O), Docker, Linux System
-                    Administration, GitHub Actions CI/CD, Tauri Desktop Shells
+                    PostgreSQL 16, pgvector, Redis, FAISS, Data Modeling, ETL/ELT Pipelines, n8n,
+                    Zapier
                   </p>
                 </div>
               </div>

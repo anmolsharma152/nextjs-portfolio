@@ -5,9 +5,8 @@ import { Brain, Cpu, Globe, Target, Terminal, X } from 'lucide-react';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 
-// Extracted strings to satisfy both ESLint quotes and Prettier formatting rules
 const INTRO_TEXT =
-  'I bridge the gap between academic research (IIT Mandi) and production systems engineering. With a unique background spanning economics, public policy, and artificial intelligence, I am passionate about privacy-first local computing, minimalist Linux workflows, and building software that feels seamless and invisible.';
+  'Agentic AI & Systems Engineer with 3+ years of professional experience architecting enterprise RAG pipelines, autonomous multi-agent state machines, and fault-tolerant microservices and production LLMOps infrastructure. Adept at building LangGraph cyclic orchestration frameworks with prompt engineering guardrails, pgvector semantic search, and enterprise REST/SSE APIs with automated LLM evaluation harnesses (LangSmith, Langfuse, RAGAS). Graduate of BCA (77.4% First Division) and Minor in AI & Data Science from CCE, IIT Mandi (CGPA 8.44/10).';
 
 const About = () => {
   const ref = useRef(null);

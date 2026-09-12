@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { ExternalLink, Github, Star, GitBranch } from 'lucide-react';
+import { ExternalLink, Github, Star, GitBranch, Layers } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 
 interface GitHubRepo {
@@ -19,6 +19,59 @@ interface GitHubRepo {
   fork: boolean;
 }
 
+interface FlagshipProject {
+  title: string;
+  subtitle: string;
+  summary: string;
+  stack: string[];
+  github: string;
+  homepage?: string;
+}
+
+const FLAGSHIP_PROJECTS: FlagshipProject[] = [
+  {
+    title: 'CodexEngine',
+    subtitle: 'Document Intelligence & Production RAG',
+    summary:
+      'Deployed a production document intelligence platform (codex-engine.vercel.app) on LangGraph state machines featuring multi-tenant pgvector search, streaming SSE responses, and automated golden dataset faithfulness regression testing.',
+    stack: ['Python', 'LangGraph', 'FastAPI', 'Next.js', 'pgvector', 'LangSmith', 'RAGAS'],
+    github: 'https://github.com/anmolsharma152/CodexEngine',
+    homepage: 'https://codex-engine.vercel.app',
+  },
+  {
+    title: 'commerce_cortex',
+    subtitle: 'Distributed Multi-Agent Transactional Orchestration Engine',
+    summary:
+      'Engineered a containerized multi-agent commerce backend featuring LangGraph state routing, PostgreSQL transactional checkpoints, Human-in-the-Loop approval gates, and 3-tier observability with OpenTelemetry and Langfuse distributed tracing.',
+    stack: [
+      'Python',
+      'FastAPI',
+      'LangGraph',
+      'PostgreSQL',
+      'Docker Compose',
+      'Langfuse',
+      'OpenTelemetry',
+    ],
+    github: 'https://github.com/anmolsharma152/commerce_cortex',
+  },
+  {
+    title: 'Nimbus',
+    subtitle: 'Autonomous Developer Agent & Sandbox Control Plane',
+    summary:
+      'Engineered a multi-tenant autonomous coding agent platform featuring a trusted control plane, disposable Docker/MicroVM sandbox workspaces, real-time WebSocket event streams, and short-lived GitHub App credential brokering.',
+    stack: ['Python', 'FastAPI', 'LangGraph', 'Docker', 'WebSockets', 'GitHub API'],
+    github: 'https://github.com/anmolsharma152/nimbus',
+  },
+  {
+    title: 'AlgoDeck',
+    subtitle: 'Full-Stack Workstation & Sandboxed Execution Runner',
+    summary:
+      'Built a full-stack developer learning workstation featuring a dual-pane VS Code Monaco IDE, isolated subprocess execution sandbox (5s kill timeout, 512KB buffer limit), PostgreSQL 16 connection pooling, and automated test harness.',
+    stack: ['Node.js', 'Express', 'PostgreSQL 16', 'Docker Compose', 'Monaco IDE'],
+    github: 'https://github.com/anmolsharma152/AlgoDeck',
+  },
+];
+
 const getRepoDescription = (name: string, description: string | null) => {
   const fallbacks: { [key: string]: string } = {
     'Scholar-Loop':
@@ -28,7 +81,7 @@ const getRepoDescription = (name: string, description: string | null) => {
     Ozyman:
       'Personal Operator & Autonomous AI Assistant app built for multi-agent workflows and local environment control.',
     commerce_cortex:
-      'Stateful autonomous commerce & inventory intelligence agent demonstrating persistent tool calling with LangGraph & PostgreSQL.',
+      'Distributed Multi-Agent Transactional Orchestration Engine featuring LangGraph state routing & PostgreSQL checkpoints.',
     'frontier-llmops-core':
       'An end-to-end engineering workspace for the modern LLM lifecycle, evaluation benchmarks, and fine-tuning pipelines.',
     'drone-intelligence':
@@ -57,7 +110,9 @@ const getRepoDescription = (name: string, description: string | null) => {
     wikirag:
       'A lightweight, fully offline RAG engine for Wikipedia querying using FAISS, RoBERTa, and Python.',
     nimbus:
-      'Autonomous Cloud Software Engineering Agent Platform powered by multi-agent orchestration and cloud infrastructure tools.',
+      'Autonomous Cloud Software Engineering Agent Platform powered by multi-agent orchestration and sandbox control plane.',
+    AlgoDeck:
+      'Full-Stack Developer Workstation & Sandboxed Execution Runner with Monaco IDE & Docker Compose.',
   };
   return (
     fallbacks[name] ||
@@ -83,8 +138,7 @@ const Projects = () => {
 
         const data = await response.json();
 
-        // Filter out forks and the special profile README repository.
-        // Sort by deployment status first (repos with a homepage link on top), then by last updated.
+        // Filter out forks and profile README repos
         const filteredRepos = data
           .filter(
             (repo: GitHubRepo) =>
@@ -102,7 +156,7 @@ const Projects = () => {
 
             return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
           })
-          .slice(0, 9); // Display the top 9 repositories
+          .slice(0, 9); // Display top 9 repos
 
         setRepos(filteredRepos);
       } catch (err) {
@@ -141,67 +195,6 @@ const Projects = () => {
     return colors[language || ''] || 'bg-gray-500';
   };
 
-  if (loading) {
-    return (
-      <section id="projects" className="py-20 relative z-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="gradient-text">Featured Projects</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Loading projects from GitHub...
-            </p>
-          </motion.div>
-          <div className="flex justify-center">
-            <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="projects" className="py-20 relative z-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="gradient-text">Featured Projects</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore my latest work and open source contributions on GitHub.
-            </p>
-          </motion.div>
-          <div className="flex justify-center">
-            <a
-              href="https://github.com/anmolsharma152"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass p-8 rounded-lg flex flex-col items-center gap-4 max-w-md w-full hover:shadow-lg transition-all duration-300"
-            >
-              <Github size={48} className="text-primary" />
-              <span className="text-lg font-semibold">Visit my GitHub profile</span>
-              <span className="text-muted-foreground text-sm">github.com/anmolsharma152</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="projects" className="py-20 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -214,136 +207,236 @@ const Projects = () => {
         >
           <h2 className="font-heading text-4xl md:text-5xl font-extrabold mb-6">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-              Featured Projects
+              Featured Systems &amp; Projects
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A showcase of my recent work and open source contributions from GitHub.
+            Architectural flagships in multi-agent orchestration, sandbox execution, and distributed
+            LLMOps infrastructure.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.3 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
-        >
-          {repos.map((repo, index) => (
-            <motion.div
-              key={repo.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 + index * 0.05, duration: 0.2 }}
-              whileHover={{ y: -10 }}
-              className="group relative"
-            >
-              <div className="glass rounded-lg overflow-hidden h-full flex flex-col">
-                {/* Project Header & Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="font-heading text-xl font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
-                        {repo.name}
-                      </h3>
+        {/* Section 1: Architectural Flagships (4-Grid) */}
+        <div className="mb-20">
+          <div className="flex items-center space-x-3 mb-8">
+            <Layers className="w-6 h-6 text-primary" />
+            <h3 className="font-heading text-2xl font-bold text-foreground">
+              Architectural Flagships
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {FLAGSHIP_PROJECTS.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.1 * index, duration: 0.4 }}
+                whileHover={{ y: -6 }}
+                className="group relative glass rounded-xl overflow-hidden border border-border/80 dark:border-border/40 hover:border-primary/50 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div className="p-6 md:p-8">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h4 className="font-heading text-2xl font-extrabold text-foreground group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h4>
+                      <p className="text-xs md:text-sm font-semibold text-primary/90 mt-1">
+                        {project.subtitle}
+                      </p>
+                    </div>
+                    <div className="flex items-center space-x-2">
                       <a
-                        href={repo.html_url}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-shrink-0"
+                        className="p-2 rounded-lg bg-muted/50 hover:bg-primary/10 hover:text-primary transition-colors"
+                        aria-label="GitHub Repository"
                       >
-                        <Github
-                          size={20}
-                          className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                        />
+                        <Github size={18} />
                       </a>
-                    </div>
-
-                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-4 mb-4">
-                      {getRepoDescription(repo.name, repo.description)}
-                    </p>
-                  </div>
-
-                  {/* Language and Stats */}
-                  <div className="flex items-center justify-between mt-4">
-                    {repo.language && (
-                      <div className="flex items-center space-x-2">
-                        <div
-                          className={`w-3 h-3 rounded-full ${getLanguageColor(repo.language)}`}
-                        ></div>
-                        <span className="text-xs text-muted-foreground">{repo.language}</span>
-                      </div>
-                    )}
-                    <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                      <div className="flex items-center space-x-1">
-                        <Star size={14} />
-                        <span>{repo.stargazers_count}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <GitBranch size={14} />
-                        <span>{repo.forks_count}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Project Footer */}
-                <div className="p-6 border-t border-border bg-secondary/30 dark:bg-secondary/10 flex flex-col justify-between min-h-[140px]">
-                  {/* Topics */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {repo.topics && repo.topics.length > 0 ? (
-                      repo.topics.slice(0, 3).map((topic) => (
-                        <span
-                          key={topic}
-                          className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground font-medium"
+                      {project.homepage && (
+                        <a
+                          href={project.homepage}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md hover:shadow-blue-600/30 transition-all"
+                          aria-label="Live Demo"
                         >
-                          {topic}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground font-medium opacity-60">
-                        portfolio
-                      </span>
-                    )}
+                          <ExternalLink size={18} />
+                        </a>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Links */}
-                  <div className="flex gap-3">
-                    <motion.a
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-4 py-2 glass rounded-lg hover:bg-primary/10 hover:text-primary transition-all duration-300 text-sm"
-                    >
-                      <Github size={16} />
-                      <span>Code</span>
-                    </motion.a>
-                    {repo.homepage && (
-                      <motion.a
-                        href={repo.homepage}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 text-sm font-medium"
-                      >
-                        <ExternalLink size={16} />
-                        <span>Live</span>
-                      </motion.a>
-                    )}
-                  </div>
-
-                  {/* Updated Date */}
-                  <div className="mt-3 text-xs text-muted-foreground">
-                    Updated {formatDate(repo.updated_at)}
-                  </div>
+                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed mt-4 mb-6">
+                    {project.summary}
+                  </p>
                 </div>
-              </div>
+
+                <div className="px-6 py-4 border-t border-border/50 bg-secondary/20 dark:bg-secondary/10 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-md text-xs font-semibold"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Section 2: Live GitHub Repositories */}
+        <div className="mb-12">
+          <div className="flex items-center space-x-3 mb-8">
+            <Github className="w-6 h-6 text-primary" />
+            <h3 className="font-heading text-2xl font-bold text-foreground">
+              Live GitHub Repositories
+            </h3>
+          </div>
+
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          ) : error ? (
+            <div className="text-center py-8 glass rounded-lg max-w-md mx-auto">
+              <p className="text-muted-foreground mb-4">
+                Explore all repositories directly on GitHub.
+              </p>
+              <a
+                href="https://github.com/anmolsharma152"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-lg font-medium"
+              >
+                <Github size={18} />
+                github.com/anmolsharma152
+              </a>
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3, duration: 0.3 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {repos.map((repo, index) => (
+                <motion.div
+                  key={repo.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.1 + index * 0.04, duration: 0.2 }}
+                  whileHover={{ y: -8 }}
+                  className="group relative"
+                >
+                  <div className="glass rounded-lg overflow-hidden h-full flex flex-col justify-between">
+                    <div className="p-6 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-start justify-between mb-3">
+                          <h4 className="font-heading text-xl font-bold group-hover:text-primary transition-colors duration-300 line-clamp-1">
+                            {repo.name}
+                          </h4>
+                          <a
+                            href={repo.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-shrink-0"
+                          >
+                            <Github
+                              size={20}
+                              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                            />
+                          </a>
+                        </div>
+
+                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-4 mb-4">
+                          {getRepoDescription(repo.name, repo.description)}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between mt-4">
+                        {repo.language && (
+                          <div className="flex items-center space-x-2">
+                            <div
+                              className={`w-3 h-3 rounded-full ${getLanguageColor(repo.language)}`}
+                            ></div>
+                            <span className="text-xs text-muted-foreground">{repo.language}</span>
+                          </div>
+                        )}
+                        <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                          <div className="flex items-center space-x-1">
+                            <Star size={14} />
+                            <span>{repo.stargazers_count}</span>
+                          </div>
+                          <div className="flex items-center space-x-1">
+                            <GitBranch size={14} />
+                            <span>{repo.forks_count}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-6 border-t border-border bg-secondary/30 dark:bg-secondary/10 flex flex-col justify-between min-h-[120px]">
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {repo.topics && repo.topics.length > 0 ? (
+                          repo.topics.slice(0, 3).map((topic) => (
+                            <span
+                              key={topic}
+                              className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground font-medium"
+                            >
+                              {topic}
+                            </span>
+                          ))
+                        ) : (
+                          <span className="px-2 py-0.5 bg-muted text-[10px] rounded-full text-muted-foreground font-medium opacity-60">
+                            portfolio
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex gap-3">
+                          <motion.a
+                            href={repo.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center gap-2 px-3.5 py-1.5 glass rounded-lg hover:bg-primary/10 hover:text-primary transition-all text-xs font-medium"
+                          >
+                            <Github size={14} />
+                            <span>Code</span>
+                          </motion.a>
+                          {repo.homepage && (
+                            <motion.a
+                              href={repo.homepage}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-md transition-all text-xs font-medium"
+                            >
+                              <ExternalLink size={14} />
+                              <span>Live</span>
+                            </motion.a>
+                          )}
+                        </div>
+
+                        <div className="text-[11px] text-muted-foreground">
+                          {formatDate(repo.updated_at)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          )}
+        </div>
 
         {/* View More Button */}
         <motion.div
@@ -361,7 +454,7 @@ const Projects = () => {
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-600/20 transition-all duration-150"
           >
             <Github size={20} />
-            View All Projects on GitHub
+            Explore All 40+ Projects on GitHub
           </motion.a>
         </motion.div>
       </div>
