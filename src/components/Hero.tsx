@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 import ThreeDCard from './3DCard';
@@ -90,13 +91,13 @@ const Hero = () => {
                 </h2>
               </div>
 
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Agentic AI &amp; Systems Engineer based in Jaipur, India. Specializing in autonomous
                 multi-agent state machines, production RAG, async FastAPI &amp; PostgreSQL backends,
                 and distributed LLMOps.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start items-center">
                 <a
                   href="#contact"
                   className="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold hover:opacity-95 transition-all shadow-lg hover:shadow-blue-600/20"
@@ -108,6 +109,16 @@ const Hero = () => {
                   className="px-8 py-3.5 border border-border/80 text-foreground rounded-xl font-semibold hover:bg-muted/50 transition-colors"
                 >
                   View My Work
+                </a>
+                <a
+                  href="/resume.pdf"
+                  download="Anmol_Sharma_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3.5 glass border border-primary/20 text-primary hover:bg-primary/10 rounded-xl font-semibold transition-all inline-flex items-center gap-2"
+                >
+                  <Download size={18} />
+                  Resume PDF
                 </a>
               </div>
             </motion.div>
