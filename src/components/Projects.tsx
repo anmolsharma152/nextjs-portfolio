@@ -28,6 +28,10 @@ interface FlagshipProject {
   homepage?: string;
 }
 
+const VERIFIED_LIVE_REPOS: Record<string, string> = {
+  CodexEngine: 'https://codex-engine.vercel.app',
+};
+
 const FLAGSHIP_PROJECTS: FlagshipProject[] = [
   {
     title: 'CodexEngine',
@@ -36,7 +40,7 @@ const FLAGSHIP_PROJECTS: FlagshipProject[] = [
       'Deployed a production document intelligence platform (codex-engine.vercel.app) on LangGraph state machines featuring multi-tenant pgvector search, streaming SSE responses, and automated golden dataset faithfulness regression testing.',
     stack: ['Python', 'LangGraph', 'FastAPI', 'Next.js', 'pgvector', 'LangSmith', 'RAGAS'],
     github: 'https://github.com/anmolsharma152/CodexEngine',
-    homepage: 'https://codex-engine.vercel.app',
+    homepage: VERIFIED_LIVE_REPOS.CodexEngine,
   },
   {
     title: 'commerce_cortex',
@@ -411,9 +415,9 @@ const Projects = () => {
                             <Github size={14} />
                             <span>Code</span>
                           </motion.a>
-                          {repo.homepage && (
+                          {VERIFIED_LIVE_REPOS[repo.name] && (
                             <motion.a
-                              href={repo.homepage}
+                              href={VERIFIED_LIVE_REPOS[repo.name]}
                               target="_blank"
                               rel="noopener noreferrer"
                               whileHover={{ scale: 1.05 }}

@@ -84,7 +84,7 @@ const Resume = () => {
       institution: 'Jaipur National University',
       period: '06/2019 – 05/2022',
       description:
-        'Grade: 77.4% — First Division. Core coursework in Object-Oriented Programming (C++), Linux Environment, Database Systems & SQL, Visual Programming, Web Design, and Management Information Systems.',
+        'Grade: 77.4% (First Division). Core coursework in Object-Oriented Programming (C++), Linux Environment, Database Systems & SQL, Visual Programming, Web Design, and Management Information Systems.',
       technologies: [
         'C++',
         'Linux Programming',
