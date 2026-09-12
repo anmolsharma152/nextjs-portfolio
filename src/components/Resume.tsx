@@ -32,16 +32,16 @@ const Resume = () => {
       description:
         'Architected automated Python and SQL ETL/ELT pipelines across 10+ B2B SaaS client accounts, aggregating cross-channel attribution and onboarding metrics into PostgreSQL with 99.5% pipeline reliability.\nEngineered multi-stage growth automation workflows using n8n, Zapier, and enterprise REST webhooks, automating LinkedIn lead capture, email sequencing pipelines, and bidirectional CRM synchronization.\nDeveloped LLM-driven reporting pipelines (FastAPI, Groq/OpenAI APIs) integrated with n8n to dynamically synthesize weekly client performance digests, cutting manual reporting turnaround by 65%.',
       technologies: [
+        'Claude',
+        'OpenAI',
+        'Cursor',
+        'Image Gen (Flux / Midjourney)',
+        'Video AI (Runway / Kling)',
         'Python',
         'FastAPI',
         'PostgreSQL',
-        'SQL',
         'n8n',
         'Zapier',
-        'Groq API',
-        'OpenAI API',
-        'ETL/ELT',
-        'Webhooks',
       ],
     },
     {
