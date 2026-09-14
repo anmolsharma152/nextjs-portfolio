@@ -148,9 +148,12 @@ const Projects = () => {
           .filter(
             (repo: GitHubRepo) =>
               !repo.fork &&
-              !['anmolsharma152', 'nextjs-portfolio', 'anmolsharma152.github.io'].includes(
-                repo.name.toLowerCase()
-              )
+              ![
+                'anmolsharma152',
+                'nextjs-portfolio',
+                'anmolsharma152.github.io',
+                'portfolio-v2',
+              ].includes(repo.name.toLowerCase())
           )
           .sort((a: GitHubRepo, b: GitHubRepo) => {
             const isLiveA = !!VERIFIED_LIVE_REPOS[a.name];
